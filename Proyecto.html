@@ -1,0 +1,1592 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Mi Portafolio - Oscar Mauricio Ramos García</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Press+Start+2P&family=VT323&display=swap" rel="stylesheet">
+  
+  <style>
+    :root {
+      --bg-beige: #F5F5DC;
+      --bg-beige-light: #F7F3E9;
+      --green-pixel: #2E7D32;
+      --green-pixel-dark: #1B5E20;
+      --black-pixel: #000000;
+      --white-pixel: #FFFFFF;
+      --font-pixel: 'Press Start 2P', monospace;
+      --font-body: 'VT323', monospace;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+      image-rendering: pixelated;
+    }
+
+    body {
+      background-color: var(--bg-beige);
+      color: var(--black-pixel);
+      font-family: var(--font-body);
+      font-size: 20px;
+      line-height: 1.4;
+      overflow-x: hidden;
+      min-width: 1024px;
+      padding-bottom: 60px;
+    }
+
+    /* CABECERA FIJA */
+    .header-retro {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 64px;
+      background-color: var(--bg-beige);
+      border-bottom: 4px solid var(--green-pixel);
+      display: flex;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .header-container {
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+      padding: 0 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo-brand {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      text-decoration: none;
+      cursor: pointer;
+    }
+
+    .pixel-pc-icon {
+      width: 32px;
+      height: 32px;
+      background: #424242;
+      border: 3px solid var(--black-pixel);
+      position: relative;
+      box-shadow: 2px 2px 0px var(--black-pixel);
+    }
+    .pixel-pc-icon::after {
+      content: '';
+      position: absolute;
+      top: 3px;
+      left: 3px;
+      width: 18px;
+      height: 14px;
+      background: #81C784;
+      border: 1px solid var(--black-pixel);
+    }
+
+    .logo-text {
+      font-family: var(--font-pixel);
+      font-size: 13px;
+      color: var(--black-pixel);
+      letter-spacing: 0.5px;
+    }
+
+    .nav-list {
+      display: flex;
+      list-style: none;
+      gap: 12px;
+      align-items: center;
+    }
+
+    .nav-btn {
+      font-family: var(--font-pixel);
+      font-size: 10px;
+      padding: 10px 16px;
+      text-decoration: none;
+      display: inline-block;
+      text-transform: uppercase;
+      border: 2px solid var(--black-pixel);
+      box-shadow: 3px 3px 0px var(--black-pixel);
+      cursor: pointer;
+    }
+
+    .nav-btn-inactive {
+      background-color: var(--white-pixel);
+      color: var(--black-pixel);
+    }
+
+    .nav-btn-active {
+      background-color: var(--green-pixel);
+      color: var(--white-pixel);
+      box-shadow: 1px 1px 0px var(--black-pixel);
+      transform: translate(2px, 2px);
+    }
+
+    /* SECCIONES Y SPA */
+    .view-section {
+      display: none;
+      margin-top: 64px;
+      min-height: calc(100vh - 64px);
+      padding: 40px 24px;
+    }
+
+    .view-section.active-view {
+      display: block;
+      animation: pixelFade 0.1s steps(2);
+    }
+
+    @keyframes pixelFade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    .view-container {
+      width: 100%;
+      max-width: 1240px;
+      margin: 0 auto;
+    }
+
+    .section-title {
+      font-family: var(--font-pixel);
+      font-size: 22px;
+      color: var(--black-pixel);
+      margin-bottom: 24px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+
+    .section-title::before {
+      content: '';
+      display: inline-block;
+      width: 16px;
+      height: 16px;
+      background-color: var(--green-pixel);
+    }
+
+    /* HERO */
+    .hero-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 48px;
+      align-items: center;
+      padding-top: 30px;
+    }
+
+    .hero-bio {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .avatar-wrapper {
+      width: 150px;
+      height: 150px;
+      border: 4px solid var(--black-pixel);
+      background-color: var(--white-pixel);
+      box-shadow: 6px 6px 0px var(--green-pixel);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .avatar-wrapper img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .title-h1 {
+      font-family: var(--font-pixel);
+      font-size: 28px;
+      color: var(--black-pixel);
+    }
+
+    .title-h2 {
+      font-family: var(--font-pixel);
+      font-size: 20px;
+      color: var(--green-pixel);
+    }
+
+    .divider-green {
+      width: 100%;
+      height: 2px;
+      background-color: var(--green-pixel);
+    }
+
+    .bio-text {
+      font-family: var(--font-body);
+      font-size: 24px;
+      line-height: 1.4;
+      color: #222222;
+    }
+
+    .hero-actions {
+      display: flex;
+      gap: 16px;
+      margin-top: 16px;
+    }
+
+    .btn-pixel-action {
+      font-family: var(--font-pixel);
+      font-size: 11px;
+      padding: 14px 22px;
+      text-decoration: none;
+      border: 3px solid var(--black-pixel);
+      box-shadow: 5px 5px 0px var(--black-pixel);
+      cursor: pointer;
+      display: inline-block;
+    }
+
+    .btn-action-primary {
+      background-color: var(--green-pixel);
+      color: var(--white-pixel);
+    }
+
+    .btn-action-secondary {
+      background-color: var(--white-pixel);
+      color: var(--black-pixel);
+    }
+
+    .btn-pixel-action:active {
+      transform: translate(3px, 3px);
+      box-shadow: 2px 2px 0px var(--black-pixel);
+    }
+
+    .illustration-frame {
+      background-color: var(--bg-beige-light);
+      border: 4px solid var(--black-pixel);
+      box-shadow: 8px 8px 0px var(--black-pixel);
+      padding: 18px;
+    }
+
+    .pixel-terminal-screen {
+      background-color: #111111;
+      border: 3px solid var(--black-pixel);
+      padding: 20px;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+    }
+
+    .terminal-code-line {
+      font-family: var(--font-body);
+      font-size: 22px;
+      color: #81C784;
+    }
+
+    /* PROYECTOS */
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(340px, 1fr));
+      gap: 28px;
+    }
+
+    .project-card {
+      background-color: var(--bg-beige-light);
+      border: 3px solid var(--black-pixel);
+      box-shadow: 4px 4px 0px var(--black-pixel);
+      display: flex;
+      flex-direction: column;
+      padding: 16px;
+    }
+
+    .project-img-box {
+      width: 100%;
+      height: 180px;
+      background-color: #2b2b2b;
+      border: 2px solid var(--black-pixel);
+      margin-bottom: 14px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .project-img-box img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+
+    .project-title {
+      font-family: var(--font-pixel);
+      font-size: 14px;
+      margin-bottom: 10px;
+    }
+
+    .project-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      margin-bottom: 12px;
+    }
+
+    .pixel-tag {
+      font-family: var(--font-pixel);
+      font-size: 8px;
+      background-color: var(--white-pixel);
+      border: 1px solid var(--black-pixel);
+      padding: 4px 6px;
+      box-shadow: 2px 2px 0px var(--black-pixel);
+    }
+
+    .project-desc {
+      font-family: var(--font-body);
+      font-size: 20px;
+      margin-bottom: 16px;
+      flex-grow: 1;
+    }
+
+    .project-footer-actions {
+      display: flex;
+      gap: 10px;
+      margin-top: auto;
+    }
+
+    .btn-card-action {
+      font-family: var(--font-pixel);
+      font-size: 9px;
+      padding: 8px 12px;
+      text-decoration: none;
+      text-align: center;
+      border: 2px solid var(--black-pixel);
+      box-shadow: 3px 3px 0px var(--black-pixel);
+      cursor: pointer;
+    }
+
+    /* MODAL DE DETALLE DE FICHA CON CARRUSEL DE IMÁGENES */
+    .detail-overlay {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.75);
+      z-index: 2500;
+      justify-content: center;
+      align-items: center;
+      padding: 20px;
+    }
+
+    .detail-modal {
+      background-color: var(--bg-beige);
+      border: 4px solid var(--black-pixel);
+      box-shadow: 8px 8px 0px var(--black-pixel);
+      max-width: 780px;
+      width: 100%;
+      max-height: 90vh;
+      overflow-y: auto;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .carousel-container {
+      position: relative;
+      width: 100%;
+      height: 320px;
+      background-color: #111;
+      border: 3px solid var(--black-pixel);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .carousel-img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+    }
+
+    .carousel-btn {
+      position: absolute;
+      top: 50%;
+      transform: translateY(-50%);
+      background: var(--white-pixel);
+      color: var(--black-pixel);
+      font-family: var(--font-pixel);
+      font-size: 16px;
+      border: 3px solid var(--black-pixel);
+      box-shadow: 3px 3px 0px var(--black-pixel);
+      width: 44px;
+      height: 44px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 10;
+    }
+
+    .carousel-btn:active {
+      transform: translateY(-50%) translate(2px, 2px);
+      box-shadow: 1px 1px 0px var(--black-pixel);
+    }
+
+    .carousel-btn-prev { left: 12px; }
+    .carousel-btn-next { right: 12px; }
+
+    .carousel-counter {
+      position: absolute;
+      bottom: 8px;
+      right: 12px;
+      background: rgba(0, 0, 0, 0.85);
+      color: #FFF;
+      font-family: var(--font-pixel);
+      font-size: 9px;
+      padding: 4px 8px;
+      border: 1px solid #FFF;
+    }
+
+    /* SOBRE MÍ */
+    .rpg-sheet-container {
+      background-color: var(--bg-beige-light);
+      border: 4px solid var(--black-pixel);
+      box-shadow: 8px 8px 0px var(--black-pixel);
+      padding: 28px;
+      display: grid;
+      grid-template-columns: 320px 1fr;
+      gap: 36px;
+    }
+
+    .rpg-avatar-col {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .rpg-avatar-frame {
+      width: 280px;
+      height: 280px;
+      border: 4px solid var(--black-pixel);
+      background-color: #e0d8b0;
+      box-shadow: 6px 6px 0px var(--green-pixel);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    .rpg-avatar-frame img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .rpg-info-box {
+      width: 100%;
+      background: var(--white-pixel);
+      border: 2px solid var(--black-pixel);
+      padding: 12px;
+      font-size: 20px;
+    }
+
+    .rpg-stats-col {
+      display: flex;
+      flex-direction: column;
+      gap: 20px;
+    }
+
+    .rpg-bio-box {
+      background: var(--white-pixel);
+      border: 2px solid var(--black-pixel);
+      padding: 16px;
+      font-size: 22px;
+    }
+
+    .stat-row {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .stat-label {
+      font-family: var(--font-pixel);
+      font-size: 11px;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    .stat-bar-container {
+      width: 100%;
+      height: 20px;
+      background: #ddd;
+      border: 2px solid var(--black-pixel);
+      display: flex;
+      padding: 2px;
+      gap: 3px;
+    }
+
+    .stat-pixel-block {
+      flex: 1;
+      height: 100%;
+      background-color: var(--green-pixel);
+    }
+
+    .stat-pixel-empty {
+      flex: 1;
+      height: 100%;
+      background-color: #bbb;
+    }
+
+    /* CONTACTO */
+    .contact-layout {
+      display: grid;
+      grid-template-columns: 1.2fr 0.8fr;
+      gap: 36px;
+    }
+
+    .npc-dialogue-card, .social-card {
+      background-color: var(--bg-beige-light);
+      border: 4px solid var(--black-pixel);
+      box-shadow: 6px 6px 0px var(--black-pixel);
+      padding: 24px;
+    }
+
+    .dialogue-speaker {
+      font-family: var(--font-pixel);
+      font-size: 12px;
+      color: var(--green-pixel);
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .contact-form {
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      gap: 6px;
+    }
+
+    .form-label {
+      font-family: var(--font-pixel);
+      font-size: 10px;
+      color: var(--black-pixel);
+    }
+
+    .pixel-input {
+      font-family: var(--font-body);
+      font-size: 20px;
+      padding: 8px 12px;
+      border: 2px solid var(--black-pixel);
+      background-color: var(--white-pixel);
+      box-shadow: 2px 2px 0px var(--black-pixel);
+      outline: none;
+    }
+
+    .pixel-input:focus {
+      border-color: var(--green-pixel);
+    }
+
+    textarea.pixel-input {
+      resize: vertical;
+      min-height: 90px;
+    }
+
+    .social-links-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 12px;
+    }
+
+    .btn-social {
+      font-family: var(--font-pixel);
+      font-size: 9px;
+      padding: 12px 8px;
+      background-color: var(--white-pixel);
+      border: 2px solid var(--black-pixel);
+      box-shadow: 3px 3px 0px var(--black-pixel);
+      text-decoration: none;
+      color: var(--black-pixel);
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      justify-content: center;
+    }
+
+    .btn-social:hover {
+      background-color: #E8F5E9;
+    }
+
+    /* MODALES GENERALES */
+    .modal-backdrop {
+      display: none;
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0, 0, 0, 0.7);
+      z-index: 3000;
+      justify-content: center;
+      align-items: center;
+    }
+
+    .npc-modal-box {
+      background-color: var(--bg-beige);
+      border: 4px solid var(--black-pixel);
+      box-shadow: 8px 8px 0px var(--black-pixel);
+      max-width: 550px;
+      width: 90%;
+      padding: 24px;
+      display: flex;
+      flex-direction: column;
+      gap: 16px;
+      text-align: center;
+    }
+
+    /* PANEL ADMIN */
+    .admin-panel-card {
+      background-color: var(--bg-beige-light);
+      border: 4px solid var(--black-pixel);
+      box-shadow: 8px 8px 0px var(--black-pixel);
+      padding: 28px;
+    }
+
+    .admin-tabs {
+      display: flex;
+      gap: 12px;
+      margin-bottom: 24px;
+      border-bottom: 2px solid var(--black-pixel);
+      padding-bottom: 12px;
+    }
+
+    .tab-btn {
+      font-family: var(--font-pixel);
+      font-size: 10px;
+      padding: 8px 16px;
+      background: var(--white-pixel);
+      border: 2px solid var(--black-pixel);
+      cursor: pointer;
+    }
+
+    .tab-btn.active-tab {
+      background: var(--green-pixel);
+      color: var(--white-pixel);
+    }
+
+    .admin-tab-content {
+      display: none;
+    }
+
+    .admin-tab-content.active-content {
+      display: block;
+    }
+
+    .admin-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 16px;
+    }
+
+    .admin-table th, .admin-table td {
+      border: 2px solid var(--black-pixel);
+      padding: 10px;
+      text-align: left;
+      font-size: 18px;
+      vertical-align: middle;
+    }
+
+    .admin-table th {
+      background-color: #e0d8b0;
+      font-family: var(--font-pixel);
+      font-size: 10px;
+    }
+
+    .btn-delete {
+      background: #D32F2F;
+      color: #FFF;
+      border: 2px solid #000;
+      font-family: var(--font-pixel);
+      font-size: 9px;
+      padding: 6px 10px;
+      cursor: pointer;
+    }
+
+    .img-thumb-admin {
+      width: 50px;
+      height: 40px;
+      object-fit: cover;
+      border: 1px solid #000;
+      display: block;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- CABECERA FIJA -->
+  <header class="header-retro">
+    <div class="header-container">
+      <div class="logo-brand" onclick="navigateTo('inicio')">
+        <div class="pixel-pc-icon"></div>
+        <span class="logo-text">Mi portafolio</span>
+      </div>
+
+      <nav aria-label="Navegación principal">
+        <ul class="nav-list">
+          <li><button class="nav-btn nav-btn-active" data-target="inicio" onclick="navigateTo('inicio')">Inicio</button></li>
+          <li><button class="nav-btn nav-btn-inactive" data-target="proyectos" onclick="navigateTo('proyectos')">Mis proyectos</button></li>
+          <li><button class="nav-btn nav-btn-inactive" data-target="sobre-mi" onclick="navigateTo('sobre-mi')">Sobre mí</button></li>
+          <li><button class="nav-btn nav-btn-inactive" data-target="contacto" onclick="navigateTo('contacto')">Contacto</button></li>
+          <li id="authNavContainer">
+            <button class="nav-btn nav-btn-inactive" id="authBtn" onclick="handleAuthClick()" style="background:#FFF0B2;">🔑 ADMIN</button>
+          </li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main>
+    <!-- VISTA 1: INICIO -->
+    <section id="inicio" class="view-section active-view">
+      <div class="view-container hero-grid">
+        <article class="hero-bio">
+          <div class="avatar-wrapper" id="heroAvatarContainer">
+            <!-- Renderizado dinámico -->
+          </div>
+          <h1 class="title-h1" id="heroTitleName">Hola, soy Oscar Mauricio</h1>
+          <h2 class="title-h2" id="heroSubtitleRole">Ingeniero en Software</h2>
+          <div class="divider-green"></div>
+          <p class="bio-text" id="heroBioText">
+            Ingeniero de software capaz de transformar tus ideas en codigo, tengo experiencia en construir proyectos en Java y HTML.
+          </p>
+          <div class="hero-actions">
+            <button class="btn-pixel-action btn-action-primary" onclick="navigateTo('proyectos')">EXPLORAR PROYECTOS</button>
+            <button class="btn-pixel-action btn-action-secondary" onclick="navigateTo('contacto')">CONTACTAR</button>
+          </div>
+        </article>
+
+        <aside class="hero-graphic">
+          <div class="illustration-frame">
+            <div class="pixel-terminal-screen">
+              <div class="terminal-code-line">&gt; SYSTEM BOOT: COMPLETE</div>
+              <div class="terminal-code-line" id="termDevName">&gt; DEV: Oscar Mauricio</div>
+              <div class="terminal-code-line">&gt; SPECIALTY: Software Engineering</div>
+              <div class="terminal-code-line">&gt; STACK: Java + HTML5 + CSS3 + JS</div>
+              <div class="terminal-code-line" style="color: #FFD54F; margin-top: 10px;">&gt; STATUS: READY FOR NEW MISSIONS _</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- VISTA 2: MIS PROYECTOS -->
+    <section id="proyectos" class="view-section">
+      <div class="view-container">
+        <h2 class="section-title">MIS PROYECTOS</h2>
+        <div class="projects-grid" id="projectsContainer"></div>
+      </div>
+    </section>
+
+    <!-- VISTA 3: SOBRE MÍ -->
+    <section id="sobre-mi" class="view-section">
+      <div class="view-container">
+        <h2 class="section-title">FICHA DE PERSONAJE // SOBRE MÍ</h2>
+        <div class="rpg-sheet-container">
+          <div class="rpg-avatar-col">
+            <div class="rpg-avatar-frame" id="rpgAvatarContainer"></div>
+            <div class="rpg-info-box">
+              <p><strong>NOMBRE:</strong> <span id="rpgDisplayNombre">Oscar Mauricio</span></p>
+              <p><strong>CLASE:</strong> <span id="rpgDisplayClase">Software Engineer</span></p>
+              <p><strong>NIVEL:</strong> <span id="rpgDisplayNivel">8-Bit Dev</span></p>
+              <p><strong>UBICACIÓN:</strong> <span id="rpgDisplayUbicacion">México</span></p>
+            </div>
+          </div>
+
+          <div class="rpg-stats-col">
+            <div class="rpg-bio-box">
+              <h3 style="font-family: var(--font-pixel); font-size: 12px; margin-bottom: 8px; color: var(--green-pixel);">[ BIOGRAFÍA ]</h3>
+              <p id="rpgDisplayBio">
+                Estudiante de Ingeniería de Software apasionado por la programación estructurada, la lógica digital y el desarrollo de arquitecturas limpias en Java y la web.
+              </p>
+            </div>
+
+            <div class="stat-row">
+              <div class="stat-label"><span id="lblSkill1">DOMINIO EN JAVA</span><span id="pctSkill1">85%</span></div>
+              <div class="stat-bar-container" id="barSkill1"></div>
+            </div>
+
+            <div class="stat-row">
+              <div class="stat-label"><span id="lblSkill2">DESARROLLO WEB</span><span id="pctSkill2">80%</span></div>
+              <div class="stat-bar-container" id="barSkill2"></div>
+            </div>
+
+            <div class="stat-row">
+              <div class="stat-label"><span id="lblSkill3">LÓGICA DIGITAL & LOGISIM</span><span id="pctSkill3">75%</span></div>
+              <div class="stat-bar-container" id="barSkill3"></div>
+            </div>
+
+            <div class="stat-row">
+              <div class="stat-label"><span id="lblSkill4">RESOLUCIÓN DE PROBLEMAS</span><span id="pctSkill4">90%</span></div>
+              <div class="stat-bar-container" id="barSkill4"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISTA 4: CONTACTO -->
+    <section id="contacto" class="view-section">
+      <div class="view-container">
+        <h2 class="section-title">MENSAJERÍA & CANALES</h2>
+        <div class="contact-layout">
+          <div class="npc-dialogue-card">
+            <div class="dialogue-speaker"><span>💬</span> Oscar Ramos:</div>
+            <p style="font-size: 22px; margin-bottom: 16px;">"¡Hola, viajero! Escribe tu mensaje para iniciar una colaboración."</p>
+
+            <form id="contactForm" class="contact-form" onsubmit="handleFormSubmit(event)">
+              <div class="form-group">
+                <label class="form-label" for="nombre">TU NOMBRE *</label>
+                <input type="text" id="nombre" class="pixel-input" placeholder="Ej. Alex Turner" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="email">CORREO ELECTRÓNICO *</label>
+                <input type="email" id="email" class="pixel-input" placeholder="correo@ejemplo.com" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="asunto">ASUNTO *</label>
+                <input type="text" id="asunto" class="pixel-input" placeholder="Propuesta de proyecto..." required>
+              </div>
+              <div class="form-group">
+                <label class="form-label" for="mensaje">MENSAJE *</label>
+                <textarea id="mensaje" class="pixel-input" minlength="10" placeholder="Escribe aquí..." required></textarea>
+              </div>
+              <button type="submit" class="btn-pixel-action btn-action-primary" style="align-self: flex-start;">ENVIAR MENSAJE</button>
+            </form>
+          </div>
+
+          <div class="social-card">
+            <h3 style="font-family: var(--font-pixel); font-size: 12px; color: var(--green-pixel);">[ CANALES DIRECTOS ]</h3>
+            <p style="font-size: 22px;">Contáctame directamente en:</p>
+            <div class="social-links-grid" id="socialLinksDisplay"></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- VISTA 5: PANEL ADMINISTRATIVO (CRUD, SOBRE MÍ, CONTACTO) -->
+    <section id="admin" class="view-section">
+      <div class="view-container">
+        <div class="projects-header" style="display:flex; justify-content:space-between; align-items:center; margin-bottom: 24px;">
+          <h2 class="section-title" style="margin-bottom:0;">PANEL DE ADMINISTRACIÓN</h2>
+          <button class="btn-pixel-action btn-action-secondary" onclick="logoutAdmin()">CERRAR SESIÓN</button>
+        </div>
+
+        <div class="admin-panel-card">
+          <div class="admin-tabs">
+            <button class="tab-btn active-tab" onclick="switchAdminTab('tab-proyectos', this)">GESTIÓN PROYECTOS</button>
+            <button class="tab-btn" onclick="switchAdminTab('tab-sobremi', this)">GESTIÓN SOBRE MÍ</button>
+            <button class="tab-btn" onclick="switchAdminTab('tab-contactos', this)">GESTIÓN CONTACTOS</button>
+          </div>
+
+          <!-- Pestaña 1: Proyectos con Portada y Carrete Múltiple -->
+          <div id="tab-proyectos" class="admin-tab-content active-content">
+            <h3 style="font-family: var(--font-pixel); font-size: 12px; margin-bottom: 12px;">AGREGAR NUEVO PROYECTO</h3>
+            <form id="addProjectForm" onsubmit="handleAddProject(event)" style="display:flex; flex-direction:column; gap:14px; margin-bottom: 24px;">
+              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+                <div class="form-group">
+                  <label class="form-label">TÍTULO DEL PROYECTO *</label>
+                  <input type="text" id="projTitle" class="pixel-input" placeholder="Ej. Tienda Virtual" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">TAGS (SEPARADOS POR COMA) *</label>
+                  <input type="text" id="projTags" class="pixel-input" placeholder="Java, Swing, POO" required>
+                </div>
+              </div>
+
+              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+                <div class="form-group">
+                  <label class="form-label">IMAGEN PRINCIPAL (PORTADA) *</label>
+                  <input type="file" id="projMainImageFile" class="pixel-input" accept="image/*" required style="padding: 6px;">
+                </div>
+                <div class="form-group">
+                  <label class="form-label">IMÁGENES ADICIONALES (CARRETE EN FICHA)</label>
+                  <input type="file" id="projGalleryFiles" class="pixel-input" accept="image/*" multiple style="padding: 6px;">
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">URL REPOSITORIO GITHUB *</label>
+                <input type="url" id="projGithub" class="pixel-input" placeholder="https://github.com/..." required>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">DESCRIPCIÓN TÉCNICA DETALLADA *</label>
+                <textarea id="projDesc" class="pixel-input" placeholder="Detalla el problema resuelto y arquitectura..." required></textarea>
+              </div>
+
+              <button type="submit" class="btn-pixel-action btn-action-primary" style="align-self: flex-start;">+ GUARDAR PROYECTO</button>
+            </form>
+
+            <h3 style="font-family: var(--font-pixel); font-size: 12px; margin-bottom: 8px;">PROYECTOS EN CATÁLOGO</h3>
+            <table class="admin-table">
+              <thead>
+                <tr>
+                  <th>PORTADA</th>
+                  <th>TÍTULO</th>
+                  <th>TAGS</th>
+                  <th>FOTOS CARRETE</th>
+                  <th>ACCIONES</th>
+                </tr>
+              </thead>
+              <tbody id="adminProjectsTableBody"></tbody>
+            </table>
+          </div>
+
+          <!-- Pestaña 2: Edición de Sobre Mí (RPG) -->
+          <div id="tab-sobremi" class="admin-tab-content">
+            <h3 style="font-family: var(--font-pixel); font-size: 12px; margin-bottom: 12px;">EDITAR INFORMACIÓN DE "SOBRE MÍ"</h3>
+            <form id="editAboutForm" onsubmit="handleSaveAbout(event)" style="display:flex; flex-direction:column; gap:14px; max-width: 700px;">
+              <div class="form-group">
+                <label class="form-label">FOTO DE PERFIL RETRO (280x280)</label>
+                <input type="file" id="aboutPhotoFile" class="pixel-input" accept="image/*" style="padding: 6px;">
+              </div>
+
+              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+                <div class="form-group">
+                  <label class="form-label">NOMBRE DEL PERSONAJE</label>
+                  <input type="text" id="adminAboutNombre" class="pixel-input" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">CLASE / PROFESIÓN</label>
+                  <input type="text" id="adminAboutClase" class="pixel-input" required>
+                </div>
+              </div>
+
+              <div style="display:grid; grid-template-columns: 1fr 1fr; gap:12px;">
+                <div class="form-group">
+                  <label class="form-label">NIVEL</label>
+                  <input type="text" id="adminAboutNivel" class="pixel-input" required>
+                </div>
+                <div class="form-group">
+                  <label class="form-label">UBICACIÓN</label>
+                  <input type="text" id="adminAboutUbicacion" class="pixel-input" required>
+                </div>
+              </div>
+
+              <div class="form-group">
+                <label class="form-label">BIOGRAFÍA COMPLETA</label>
+                <textarea id="adminAboutBio" class="pixel-input" style="min-height:110px;" required></textarea>
+              </div>
+
+              <h4 style="font-family: var(--font-pixel); font-size: 10px; color: var(--green-pixel); margin-top: 8px;">ESTADÍSTICAS / HABILIDADES (0 A 100%)</h4>
+              <div style="display:grid; grid-template-columns: 2fr 1fr; gap:12px;">
+                <input type="text" id="adminSkill1Name" class="pixel-input" placeholder="Nombre Habilidad 1" required>
+                <input type="number" id="adminSkill1Pct" class="pixel-input" min="0" max="100" placeholder="%" required>
+              </div>
+              <div style="display:grid; grid-template-columns: 2fr 1fr; gap:12px;">
+                <input type="text" id="adminSkill2Name" class="pixel-input" placeholder="Nombre Habilidad 2" required>
+                <input type="number" id="adminSkill2Pct" class="pixel-input" min="0" max="100" placeholder="%" required>
+              </div>
+              <div style="display:grid; grid-template-columns: 2fr 1fr; gap:12px;">
+                <input type="text" id="adminSkill3Name" class="pixel-input" placeholder="Nombre Habilidad 3" required>
+                <input type="number" id="adminSkill3Pct" class="pixel-input" min="0" max="100" placeholder="%" required>
+              </div>
+              <div style="display:grid; grid-template-columns: 2fr 1fr; gap:12px;">
+                <input type="text" id="adminSkill4Name" class="pixel-input" placeholder="Nombre Habilidad 4" required>
+                <input type="number" id="adminSkill4Pct" class="pixel-input" min="0" max="100" placeholder="%" required>
+              </div>
+
+              <button type="submit" class="btn-pixel-action btn-action-primary" style="align-self: flex-start; margin-top: 8px;">
+                💾 GUARDAR INFORMACIÓN SOBRE MÍ
+              </button>
+            </form>
+          </div>
+
+          <!-- Pestaña 3: Contactos -->
+          <div id="tab-contactos" class="admin-tab-content">
+            <h3 style="font-family: var(--font-pixel); font-size: 12px; margin-bottom: 12px;">EDITAR CANALES DE CONTACTO</h3>
+            <form id="editContactsForm" onsubmit="handleSaveContacts(event)" style="display:flex; flex-direction:column; gap:14px; max-width: 600px;">
+              <div class="form-group">
+                <label class="form-label">NÚMERO WHATSAPP</label>
+                <input type="text" id="adminWhatsapp" class="pixel-input" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">URL LINKEDIN</label>
+                <input type="url" id="adminLinkedin" class="pixel-input" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">URL GITHUB</label>
+                <input type="url" id="adminGithub" class="pixel-input" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">URL FACEBOOK</label>
+                <input type="url" id="adminFacebook" class="pixel-input" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">URL INSTAGRAM</label>
+                <input type="url" id="adminInstagram" class="pixel-input" required>
+              </div>
+              <div class="form-group">
+                <label class="form-label">CORREO ELECTRÓNICO</label>
+                <input type="email" id="adminEmail" class="pixel-input" required>
+              </div>
+              <button type="submit" class="btn-pixel-action btn-action-primary" style="align-self: flex-start;">
+                💾 GUARDAR CAMBIOS DE CONTACTO
+              </button>
+            </form>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- MODAL DE DETALLE DE PROYECTO CON CARRETE DE FOTOS (RF-006) -->
+  <div id="projectDetailModal" class="detail-overlay">
+    <div class="detail-modal">
+      <div style="display:flex; justify-content:space-between; align-items:center;">
+        <h2 id="modalProjectTitle" class="project-title" style="font-size: 18px; color: var(--green-pixel); margin:0;">TÍTULO</h2>
+        <button class="btn-card-action" style="background:#FFF;" onclick="closeDetail()">[X] CERRAR</button>
+      </div>
+
+      <!-- Carrete Interactivo con Flechas -->
+      <div class="carousel-container">
+        <button class="carousel-btn carousel-btn-prev" onclick="prevCarouselImage()">&lt;</button>
+        <img id="carouselActiveImg" class="carousel-img" src="" alt="Captura del proyecto">
+        <button class="carousel-btn carousel-btn-next" onclick="nextCarouselImage()">&gt;</button>
+        <div id="carouselCounter" class="carousel-counter">1 / 1</div>
+      </div>
+
+      <div id="modalProjectTags" class="project-tags"></div>
+      <p id="modalProjectDesc" style="font-size: 22px; line-height: 1.4;"></p>
+      
+      <div style="display:flex; justify-content:space-between; align-items:center; margin-top:10px;">
+        <button class="btn-card-action" style="background:#FFF;" onclick="closeDetail()">← VOLVER A PROYECTOS</button>
+        <a id="modalGithubLink" href="#" target="_blank" class="btn-card-action" style="background:var(--green-pixel); color:#FFF;">
+          REPOSITORIO GITHUB ↗
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <!-- MODAL DE LOGIN ADMIN -->
+  <div id="loginModal" class="modal-backdrop">
+    <div class="npc-modal-box" style="text-align: left;">
+      <h3 style="font-family: var(--font-pixel); font-size: 14px; color: var(--green-pixel); text-align: center;">
+        [ INGRESO DE ADMINISTRADOR ]
+      </h3>
+      <p style="font-size: 18px; color: #555; text-align: center;">
+        <strong>Usuario:</strong> admin | <strong>Contraseña:</strong> retro2026
+      </p>
+      <form id="adminLoginForm" onsubmit="handleAdminLogin(event)" style="display:flex; flex-direction:column; gap:12px;">
+        <div class="form-group">
+          <label class="form-label">USUARIO</label>
+          <input type="text" id="loginUser" class="pixel-input" placeholder="admin" required>
+        </div>
+        <div class="form-group">
+          <label class="form-label">CONTRASEÑA</label>
+          <input type="password" id="loginPass" class="pixel-input" placeholder="••••••••" required>
+        </div>
+        <p id="loginErrorMsg" style="color: #D32F2F; font-size: 18px; display: none;">Credenciales incorrectas.</p>
+        <div style="display:flex; justify-content:space-between; margin-top:8px;">
+          <button type="button" class="btn-pixel-action btn-action-secondary" onclick="closeLoginModal()">CANCELAR</button>
+          <button type="submit" class="btn-pixel-action btn-action-primary">ENTRAR</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- MODAL DE CONFIRMACIÓN DE MENSAJE -->
+  <div id="confirmationModal" class="modal-backdrop">
+    <div class="npc-modal-box">
+      <h3 style="font-family: var(--font-pixel); font-size: 14px; color: var(--green-pixel);">[ MENSAJE TRANSMITIDO ]</h3>
+      <p style="font-size: 24px; line-height: 1.4;">
+        Gracias por su mensaje, se atendera en la brevedad posible, porfavor revise su correo electronico mas tarde
+      </p>
+      <button class="btn-pixel-action btn-action-primary" style="align-self: center;" onclick="closeConfirmModal()">ENTENDIDO</button>
+    </div>
+  </div>
+
+  <script>
+    /* ==========================================================================
+       DATOS INICIALES Y PERSISTENCIA (LOCALSTORAGE)
+       ========================================================================== */
+    const DEFAULT_PROJECTS = [
+      {
+        id: 1,
+        title: "Sistema Tienda Black Brothers",
+        tags: ["Java", "Swing", "POO"],
+        desc: "Aplicación de escritorio con GUI personalizada para catálogo de productos, gestión de compras y facturación.",
+        github: "https://github.com",
+        mainImage: "",
+        gallery: []
+      },
+      {
+        id: 2,
+        title: "Decodificador Alfanumérico ROM",
+        tags: ["Logisim", "Arquitectura", "Hexadecimal"],
+        desc: "Circuito lógico de decodificación para display alfanumérico de 16 segmentos con tablas hexadecimales en memoria ROM.",
+        github: "https://github.com",
+        mainImage: "",
+        gallery: []
+      },
+      {
+        id: 3,
+        title: "Sistema Biblioteca Virtual",
+        tags: ["JavaFX", "FXML", "Scene Builder"],
+        desc: "Plataforma de préstamos y consulta de libros con arquitectura MVC reactiva.",
+        github: "https://github.com",
+        mainImage: "",
+        gallery: []
+      }
+    ];
+
+    const DEFAULT_ABOUT = {
+      nombre: "Oscar Mauricio",
+      clase: "Software Engineer",
+      nivel: "8-Bit Dev",
+      ubicacion: "México",
+      bio: "Estudiante de Ingeniería de Software apasionado por la programación estructurada, la lógica digital y el desarrollo de arquitecturas limpias en Java y la web.",
+      avatar: "",
+      skill1Name: "DOMINIO EN JAVA", skill1Pct: 85,
+      skill2Name: "DESARROLLO WEB", skill2Pct: 80,
+      skill3Name: "LÓGICA DIGITAL & LOGISIM", skill3Pct: 75,
+      skill4Name: "RESOLUCIÓN DE PROBLEMAS", skill4Pct: 90
+    };
+
+    const DEFAULT_CONTACTS = {
+      whatsapp: "5217220000000",
+      linkedin: "https://linkedin.com",
+      github: "https://github.com",
+      facebook: "https://facebook.com",
+      instagram: "https://instagram.com",
+      email: "oscar.contacto@ejemplo.com"
+    };
+
+    let projects = JSON.parse(localStorage.getItem('portfolio_projects')) || DEFAULT_PROJECTS;
+    let aboutData = JSON.parse(localStorage.getItem('portfolio_about')) || DEFAULT_ABOUT;
+    let contacts = JSON.parse(localStorage.getItem('portfolio_contacts')) || DEFAULT_CONTACTS;
+    let isAuthenticated = sessionStorage.getItem('admin_token') === 'true';
+
+    // Variables de estado del carrusel modal
+    let currentModalImages = [];
+    let currentImageIndex = 0;
+
+    /* ==========================================================================
+       NAVEGACIÓN SPA
+       ========================================================================== */
+    function navigateTo(sectionId) {
+      document.querySelectorAll('.view-section').forEach(s => s.classList.remove('active-view'));
+      const target = document.getElementById(sectionId);
+      if (target) target.classList.add('active-view');
+
+      document.querySelectorAll('.nav-btn').forEach(btn => {
+        if (btn.getAttribute('data-target') === sectionId) {
+          btn.classList.remove('nav-btn-inactive');
+          btn.classList.add('nav-btn-active');
+        } else {
+          btn.classList.remove('nav-btn-active');
+          btn.classList.add('nav-btn-inactive');
+        }
+      });
+      window.scrollTo(0, 0);
+    }
+
+    /* ==========================================================================
+       RENDERIZADO DE SECCIONES
+       ========================================================================== */
+    function renderProjects() {
+      const container = document.getElementById('projectsContainer');
+      const tableBody = document.getElementById('adminProjectsTableBody');
+      container.innerHTML = '';
+      tableBody.innerHTML = '';
+
+      projects.forEach((p, idx) => {
+        // Tarjeta en catálogo público
+        const card = document.createElement('article');
+        card.className = 'project-card';
+        
+        const imgContent = p.mainImage 
+          ? `<img src="${p.mainImage}" alt="${p.title}">` 
+          : `<span style="color:#81C784; font-family:var(--font-pixel); font-size:10px;">[ PORTADA ${p.id} ]</span>`;
+
+        card.innerHTML = `
+          <div class="project-img-box">${imgContent}</div>
+          <h3 class="project-title">${p.title}</h3>
+          <div class="project-tags">
+            ${p.tags.map(t => `<span class="pixel-tag">${t}</span>`).join('')}
+          </div>
+          <p class="project-desc">${p.desc}</p>
+          <div class="project-footer-actions">
+            <button class="btn-card-action" style="background:#FFF; color:#000;" onclick="openProjectDetail(${idx})">
+              VER FICHA
+            </button>
+            <a href="${p.github}" target="_blank" class="btn-card-action" style="background:var(--green-pixel); color:#FFF;">
+              GITHUB ↗
+            </a>
+          </div>
+        `;
+        container.appendChild(card);
+
+        // Fila en tabla administrativa
+        const row = document.createElement('tr');
+        const thumbContent = p.mainImage 
+          ? `<img src="${p.mainImage}" class="img-thumb-admin">` 
+          : `<span style="font-size:12px;">N/A</span>`;
+
+        const galleryCount = p.gallery ? p.gallery.length : 0;
+
+        row.innerHTML = `
+          <td>${thumbContent}</td>
+          <td>${p.title}</td>
+          <td>${p.tags.join(', ')}</td>
+          <td>${galleryCount} foto(s)</td>
+          <td>
+            <button class="btn-delete" onclick="handleDeleteProject(${p.id})">ELIMINAR</button>
+          </td>
+        `;
+        tableBody.appendChild(row);
+      });
+    }
+
+    function renderAbout() {
+      // 1. Vista Pública: Sobre Mí
+      document.getElementById('rpgDisplayNombre').innerText = aboutData.nombre;
+      document.getElementById('rpgDisplayClase').innerText = aboutData.clase;
+      document.getElementById('rpgDisplayNivel').innerText = aboutData.nivel;
+      document.getElementById('rpgDisplayUbicacion').innerText = aboutData.ubicacion;
+      document.getElementById('rpgDisplayBio').innerText = aboutData.bio;
+
+      const avatarContainer = document.getElementById('rpgAvatarContainer');
+      if (aboutData.avatar) {
+        avatarContainer.innerHTML = `<img src="${aboutData.avatar}" alt="Avatar RPG">`;
+      } else {
+        avatarContainer.innerHTML = `<span style="font-family:var(--font-pixel); font-size:11px; text-align:center;">[ RETRATO 280x280 ]</span>`;
+      }
+
+      // También actualizar el avatar pequeño del Hero
+      const heroAvatar = document.getElementById('heroAvatarContainer');
+      if (aboutData.avatar) {
+        heroAvatar.innerHTML = `<img src="${aboutData.avatar}" alt="Avatar Hero">`;
+      } else {
+        heroAvatar.innerHTML = `<span style="font-family:var(--font-pixel); font-size:10px;">[ AVATAR ]</span>`;
+      }
+
+      // Habilidades y barras de bloques
+      renderSkillBar('Skill1', aboutData.skill1Name, aboutData.skill1Pct);
+      renderSkillBar('Skill2', aboutData.skill2Name, aboutData.skill2Pct);
+      renderSkillBar('Skill3', aboutData.skill3Name, aboutData.skill3Pct);
+      renderSkillBar('Skill4', aboutData.skill4Name, aboutData.skill4Pct);
+
+      // 2. Formulario de Administración
+      document.getElementById('adminAboutNombre').value = aboutData.nombre;
+      document.getElementById('adminAboutClase').value = aboutData.clase;
+      document.getElementById('adminAboutNivel').value = aboutData.nivel;
+      document.getElementById('adminAboutUbicacion').value = aboutData.ubicacion;
+      document.getElementById('adminAboutBio').value = aboutData.bio;
+
+      document.getElementById('adminSkill1Name').value = aboutData.skill1Name;
+      document.getElementById('adminSkill1Pct').value = aboutData.skill1Pct;
+      document.getElementById('adminSkill2Name').value = aboutData.skill2Name;
+      document.getElementById('adminSkill2Pct').value = aboutData.skill2Pct;
+      document.getElementById('adminSkill3Name').value = aboutData.skill3Name;
+      document.getElementById('adminSkill3Pct').value = aboutData.skill3Pct;
+      document.getElementById('adminSkill4Name').value = aboutData.skill4Name;
+      document.getElementById('adminSkill4Pct').value = aboutData.skill4Pct;
+    }
+
+    function renderSkillBar(prefix, name, pct) {
+      document.getElementById(`lbl${prefix}`).innerText = name;
+      document.getElementById(`pct${prefix}`).innerText = pct + "%";
+      const bar = document.getElementById(`bar${prefix}`);
+      bar.innerHTML = '';
+
+      const filledBlocks = Math.round(pct / 10);
+      for (let i = 0; i < 10; i++) {
+        const block = document.createElement('div');
+        block.className = i < filledBlocks ? 'stat-pixel-block' : 'stat-pixel-empty';
+        bar.appendChild(block);
+      }
+    }
+
+    function renderContacts() {
+      const socialContainer = document.getElementById('socialLinksDisplay');
+      socialContainer.innerHTML = `
+        <a href="https://wa.me/${contacts.whatsapp}" target="_blank" class="btn-social"><span>📱</span> WHATSAPP</a>
+        <a href="${contacts.linkedin}" target="_blank" class="btn-social"><span>💼</span> LINKEDIN</a>
+        <a href="${contacts.github}" target="_blank" class="btn-social"><span>💻</span> GITHUB</a>
+        <a href="${contacts.facebook}" target="_blank" class="btn-social"><span>👥</span> FACEBOOK</a>
+        <a href="${contacts.instagram}" target="_blank" class="btn-social"><span>📸</span> INSTAGRAM</a>
+        <a href="mailto:${contacts.email}" class="btn-social"><span>✉️</span> EMAIL</a>
+      `;
+
+      document.getElementById('adminWhatsapp').value = contacts.whatsapp;
+      document.getElementById('adminLinkedin').value = contacts.linkedin;
+      document.getElementById('adminGithub').value = contacts.github;
+      document.getElementById('adminFacebook').value = contacts.facebook;
+      document.getElementById('adminInstagram').value = contacts.instagram;
+      document.getElementById('adminEmail').value = contacts.email;
+    }
+
+    /* ==========================================================================
+       MODAL DE DETALLE DE FICHA Y CARRETE DE FOTOS
+       ========================================================================== */
+    function openProjectDetail(index) {
+      const p = projects[index];
+      document.getElementById('modalProjectTitle').innerText = p.title;
+      document.getElementById('modalProjectDesc').innerText = p.desc;
+      document.getElementById('modalGithubLink').href = p.github;
+
+      const tagsBox = document.getElementById('modalProjectTags');
+      tagsBox.innerHTML = p.tags.map(t => `<span class="pixel-tag">${t}</span>`).join('');
+
+      // Construir colección de imágenes para el carrete
+      currentModalImages = [];
+      if (p.mainImage) currentModalImages.push(p.mainImage);
+      if (p.gallery && p.gallery.length > 0) {
+        currentModalImages = currentModalImages.concat(p.gallery);
+      }
+
+      currentImageIndex = 0;
+      updateCarouselView();
+
+      document.getElementById('projectDetailModal').style.display = 'flex';
+    }
+
+    function closeDetail() {
+      document.getElementById('projectDetailModal').style.display = 'none';
+    }
+
+    function updateCarouselView() {
+      const imgElem = document.getElementById('carouselActiveImg');
+      const counterElem = document.getElementById('carouselCounter');
+
+      if (currentModalImages.length > 0) {
+        imgElem.src = currentModalImages[currentImageIndex];
+        imgElem.style.display = 'block';
+        counterElem.innerText = `${currentImageIndex + 1} / ${currentModalImages.length}`;
+      } else {
+        imgElem.src = '';
+        imgElem.style.display = 'none';
+        counterElem.innerText = '0 / 0';
+      }
+    }
+
+    function prevCarouselImage() {
+      if (currentModalImages.length <= 1) return;
+      currentImageIndex = (currentImageIndex - 1 + currentModalImages.length) % currentModalImages.length;
+      updateCarouselView();
+    }
+
+    function nextCarouselImage() {
+      if (currentModalImages.length <= 1) return;
+      currentImageIndex = (currentImageIndex + 1) % currentModalImages.length;
+      updateCarouselView();
+    }
+
+    /* ==========================================================================
+       CONTROL DE PESTAÑAS Y AUTENTICACIÓN ADMIN
+       ========================================================================== */
+    function switchAdminTab(tabId, btn) {
+      document.querySelectorAll('.admin-tab-content').forEach(c => c.classList.remove('active-content'));
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active-tab'));
+      document.getElementById(tabId).classList.add('active-content');
+      btn.classList.add('active-tab');
+    }
+
+    function updateAuthUI() {
+      const authBtn = document.getElementById('authBtn');
+      if (isAuthenticated) {
+        authBtn.innerText = "⚙️ PANEL";
+        authBtn.style.background = "#81C784";
+      } else {
+        authBtn.innerText = "🔑 ADMIN";
+        authBtn.style.background = "#FFF0B2";
+      }
+    }
+
+    function handleAuthClick() {
+      if (isAuthenticated) {
+        navigateTo('admin');
+      } else {
+        openLoginModal();
+      }
+    }
+
+    function openLoginModal() {
+      document.getElementById('loginErrorMsg').style.display = 'none';
+      document.getElementById('adminLoginForm').reset();
+      document.getElementById('loginModal').style.display = 'flex';
+    }
+
+    function closeLoginModal() {
+      document.getElementById('loginModal').style.display = 'none';
+    }
+
+    function handleAdminLogin(e) {
+      e.preventDefault();
+      const user = document.getElementById('loginUser').value.trim();
+      const pass = document.getElementById('loginPass').value.trim();
+
+      if (user === 'admin' && pass === 'retro2026') {
+        isAuthenticated = true;
+        sessionStorage.setItem('admin_token', 'true');
+        closeLoginModal();
+        updateAuthUI();
+        navigateTo('admin');
+      } else {
+        document.getElementById('loginErrorMsg').style.display = 'block';
+      }
+    }
+
+    function logoutAdmin() {
+      isAuthenticated = false;
+      sessionStorage.removeItem('admin_token');
+      updateAuthUI();
+      navigateTo('inicio');
+    }
+
+    /* ==========================================================================
+       OPERACIONES ADMIN: GUARDAR PROYECTO CON CARRETE
+       ========================================================================== */
+    function fileToBase64(file) {
+      return new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.onload = () => resolve(reader.result);
+        reader.onerror = error => reject(error);
+        reader.readAsDataURL(file);
+      });
+    }
+
+    async function handleAddProject(e) {
+      e.preventDefault();
+      const title = document.getElementById('projTitle').value.trim();
+      const tags = document.getElementById('projTags').value.split(',').map(t => t.trim());
+      const github = document.getElementById('projGithub').value.trim();
+      const desc = document.getElementById('projDesc').value.trim();
+      const mainFileInput = document.getElementById('projMainImageFile');
+      const galleryInput = document.getElementById('projGalleryFiles');
+
+      try {
+        let mainImageBase64 = "";
+        if (mainFileInput.files && mainFileInput.files[0]) {
+          mainImageBase64 = await fileToBase64(mainFileInput.files[0]);
+        }
+
+        let galleryBase64Array = [];
+        if (galleryInput.files && galleryInput.files.length > 0) {
+          for (let file of galleryInput.files) {
+            const b64 = await fileToBase64(file);
+            galleryBase64Array.push(b64);
+          }
+        }
+
+        const newProject = {
+          id: Date.now(),
+          title,
+          tags,
+          desc,
+          github,
+          mainImage: mainImageBase64,
+          gallery: galleryBase64Array
+        };
+
+        projects.push(newProject);
+        localStorage.setItem('portfolio_projects', JSON.stringify(projects));
+        renderProjects();
+        document.getElementById('addProjectForm').reset();
+        alert('¡Proyecto y fotos del carrete guardados exitosamente!');
+      } catch (err) {
+        alert('Error al procesar las imágenes: ' + err);
+      }
+    }
+
+    function handleDeleteProject(id) {
+      if (confirm('¿Deseas eliminar este proyecto del catálogo?')) {
+        projects = projects.filter(p => p.id !== id);
+        localStorage.setItem('portfolio_projects', JSON.stringify(projects));
+        renderProjects();
+      }
+    }
+
+    /* ==========================================================================
+       OPERACIONES ADMIN: EDITAR SOBRE MÍ Y CONTACTOS
+       ========================================================================== */
+    async function handleSaveAbout(e) {
+      e.preventDefault();
+      const photoInput = document.getElementById('aboutPhotoFile');
+
+      let newAvatar = aboutData.avatar;
+      if (photoInput.files && photoInput.files[0]) {
+        newAvatar = await fileToBase64(photoInput.files[0]);
+      }
+
+      aboutData = {
+        nombre: document.getElementById('adminAboutNombre').value.trim(),
+        clase: document.getElementById('adminAboutClase').value.trim(),
+        nivel: document.getElementById('adminAboutNivel').value.trim(),
+        ubicacion: document.getElementById('adminAboutUbicacion').value.trim(),
+        bio: document.getElementById('adminAboutBio').value.trim(),
+        avatar: newAvatar,
+        skill1Name: document.getElementById('adminSkill1Name').value.trim(),
+        skill1Pct: parseInt(document.getElementById('adminSkill1Pct').value),
+        skill2Name: document.getElementById('adminSkill2Name').value.trim(),
+        skill2Pct: parseInt(document.getElementById('adminSkill2Pct').value),
+        skill3Name: document.getElementById('adminSkill3Name').value.trim(),
+        skill3Pct: parseInt(document.getElementById('adminSkill3Pct').value),
+        skill4Name: document.getElementById('adminSkill4Name').value.trim(),
+        skill4Pct: parseInt(document.getElementById('adminSkill4Pct').value)
+      };
+
+      localStorage.setItem('portfolio_about', JSON.stringify(aboutData));
+      renderAbout();
+      alert('¡Información de "Sobre Mí" y estadísticas actualizadas!');
+    }
+
+    function handleSaveContacts(e) {
+      e.preventDefault();
+      contacts = {
+        whatsapp: document.getElementById('adminWhatsapp').value.trim(),
+        linkedin: document.getElementById('adminLinkedin').value.trim(),
+        github: document.getElementById('adminGithub').value.trim(),
+        facebook: document.getElementById('adminFacebook').value.trim(),
+        instagram: document.getElementById('adminInstagram').value.trim(),
+        email: document.getElementById('adminEmail').value.trim()
+      };
+
+      localStorage.setItem('portfolio_contacts', JSON.stringify(contacts));
+      renderContacts();
+      alert('¡Canales de contacto actualizados correctamente!');
+    }
+
+    /* ==========================================================================
+       ENVÍO DE FORMULARIO DE CONTACTO
+       ========================================================================== */
+    function handleFormSubmit(e) {
+      e.preventDefault();
+      document.getElementById('confirmationModal').style.display = 'flex';
+      document.getElementById('contactForm').reset();
+    }
+
+    function closeConfirmModal() {
+      document.getElementById('confirmationModal').style.display = 'none';
+    }
+
+    // Inicialización general
+    window.addEventListener('DOMContentLoaded', () => {
+      renderProjects();
+      renderAbout();
+      renderContacts();
+      updateAuthUI();
+    });
+  </script>
+</body>
+</html>
