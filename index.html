@@ -1,0 +1,1006 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Oscar Mauricio Ramos García | Portafolio</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+/* ============================================================
+   1. VARIABLES / RESET Y MODO CLARO/OSCURO
+   ============================================================ */
+:root{
+  --bg-deep:#0a0620;
+  --bg-screen-1:#0b0a2e;
+  --bg-screen-2:#1b0f4a;
+  --glass:rgba(255,255,255,.10);
+  --glass-dark:rgba(18,16,48,.55);
+  --glass-strong:rgba(28,30,64,.62);
+  --glass-border:rgba(255,255,255,.22);
+  --text:#ffffff;
+  --text-soft:rgba(255,255,255,.82);
+  --text-mute:rgba(255,255,255,.62);
+  --cyan:#3ad7ff;
+  --blue:#3b82f6;
+  --purple:#9b5cff;
+  --magenta:#c04cff;
+  --green:#5ee08a;
+  --neon:linear-gradient(135deg,#3ad7ff 0%,#4f7bff 45%,#a855f7 100%);
+  --neon-btn:linear-gradient(90deg,#22b8ff 0%,#5b6dff 55%,#b04dff 100%);
+  --nav-dark:#12132b;
+  --radius-lg:18px;
+  --radius-md:12px;
+  --radius-pill:999px;
+  --veil:linear-gradient(90deg,rgba(20,18,30,.58) 0%,rgba(20,18,30,.40) 38%,rgba(20,18,30,0) 62%),
+         linear-gradient(180deg,rgba(0,0,0,.18) 0%,rgba(0,0,0,0) 25%);
+}
+
+body.light-mode {
+  --bg-deep: #e2e8f0;
+  --bg-screen-1: #cbd5e1;
+  --bg-screen-2: #f1f5f9;
+  --glass: rgba(0,0,0,.05);
+  --glass-dark: rgba(255,255,255,.75);
+  --glass-strong: rgba(255,255,255,.85);
+  --glass-border: rgba(0,0,0,.15);
+  --text: #0f172a;
+  --text-soft: #334155;
+  --text-mute: #64748b;
+  --neon: linear-gradient(135deg, #0ea5e9 0%, #6366f1 45%, #a855f7 100%);
+  --neon-btn: linear-gradient(90deg, #0ea5e9 0%, #6366f1 55%, #a855f7 100%);
+  --nav-dark: #ffffff;
+  --veil: linear-gradient(90deg, rgba(255,255,255,.85) 0%, rgba(255,255,255,.6) 38%, rgba(255,255,255,0) 62%),
+          linear-gradient(180deg, rgba(0,0,0,.05) 0%, rgba(0,0,0,0) 25%);
+}
+
+*{box-sizing:border-box;margin:0;padding:0}
+html,body{height:100%}
+body{
+  font-family:'Inter',system-ui,-apple-system,'Segoe UI',sans-serif;
+  color:var(--text);
+  background:#8f8a86 url("resources/fondo.jpg") center/cover no-repeat fixed;
+  overflow:hidden;
+  -webkit-font-smoothing:antialiased;
+  transition: color 0.4s ease;
+}
+button{font-family:inherit;cursor:pointer;border:none;background:none;color:inherit}
+a{color:inherit;text-decoration:none; display:inline-block;}
+ul{list-style:none}
+
+body::before{
+  content:"";position:fixed;inset:0;z-index:0;pointer-events:none;
+  background: var(--veil);
+  transition: background 0.4s ease;
+}
+
+.glass{
+  position:relative;
+  background:var(--glass-dark);
+  -webkit-backdrop-filter:blur(14px) saturate(140%);
+  backdrop-filter:blur(14px) saturate(140%);
+  border:1px solid var(--glass-border);
+  border-radius:var(--radius-lg);
+  box-shadow:0 10px 30px rgba(0,0,0,.28), inset 0 1px 0 rgba(255,255,255,.18);
+}
+.neon-border{position:relative}
+.neon-border::before{
+  content:"";position:absolute;inset:0;padding:1.5px;border-radius:inherit;
+  background:var(--neon);
+  -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+  -webkit-mask-composite:xor;
+          mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);
+          mask-composite:exclude;
+  pointer-events:none;
+}
+
+body.light-mode .card { background: rgba(255, 255, 255, 0.85); border: 1px solid #cbd5e1; }
+body.light-mode .nav-cta { color: #0f172a; border: 1px solid #cbd5e1; }
+body.light-mode .header {
+  background: rgba(255, 255, 255, 0.75);
+  -webkit-backdrop-filter: blur(12px);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 20px rgba(0,0,0,0.05);
+}
+body.light-mode .btn-ghost { color: #0f172a; border-color: #64748b; background: rgba(0,0,0,.05); }
+body.light-mode .btn-ghost:hover { background: rgba(0,0,0,.1); }
+body.light-mode .float-card, body.light-mode .social-item small, body.light-mode .cv-sec p, body.light-mode .cv-sec li { color: #334155; }
+body.light-mode .float-card b, body.light-mode .social-item b, body.light-mode .card h3, body.light-mode .pts li b, body.light-mode .cv-sec li b { color: #0f172a; }
+body.light-mode .code-card { color: #6366f1; background: rgba(255,255,255,.7); border-color: #cbd5e1; }
+body.light-mode .timeline::before { background: linear-gradient(180deg, #6366f1, #a855f7); }
+body.light-mode .field { color: #0f172a; background: rgba(255,255,255,.6); border-color: #cbd5e1; }
+body.light-mode .field::placeholder { color: #64748b; }
+
+/* ============================================================
+   3. HEADER Y LOGOTIPO
+   ============================================================ */
+.header{
+  position:fixed;top:0;left:0;right:0;z-index:50;
+  display:flex;align-items:center;justify-content:space-between;
+  padding:clamp(14px,2.6vh,28px) 3.7%;
+}
+.brand{
+  display:flex;align-items:center;gap:12px;
+  font-size:clamp(.72rem,1.05vw,1rem);letter-spacing:.2px;white-space:nowrap;
+  text-shadow:0 1px 8px rgba(0,0,0,.4);
+}
+.brand-logo{
+  width:36px;height:36px;border-radius:8px;
+  background:url("resources/logo.png") center/cover no-repeat, var(--neon);
+  border:1px solid rgba(255,255,255,0.4);
+  box-shadow:0 2px 8px rgba(0,0,0,0.3);
+  display:inline-block;
+}
+.brand strong{font-weight:800;text-transform:uppercase}
+.brand span{font-weight:400;color:var(--text-soft);margin-left:4px}
+
+.nav{display:flex;align-items:center;gap:clamp(8px,1.5vw,22px)}
+.nav-avatar{
+  width:32px;height:32px;border-radius:50%;
+  background:url("resources/foto-perfil.png") center/cover,var(--neon);
+  border:2px solid rgba(255,255,255,.55);
+  box-shadow:0 2px 8px rgba(0,0,0,.4);
+  display:none;
+}
+body[data-view]:not([data-view="inicio"]) .nav-avatar{display:block}
+.nav-link{
+  font-size:clamp(.68rem,.92vw,.88rem);font-weight:500;
+  padding:7px 12px;border-radius:9px;color:var(--text);
+  transition:background .25s,box-shadow .25s;
+  text-shadow:0 1px 6px rgba(0,0,0,.35);cursor:pointer;
+}
+.nav-link:hover{background:rgba(255,255,255,.12)}
+.nav-link.active{
+  background:linear-gradient(135deg,rgba(40,70,160,.9),rgba(70,40,150,.9));
+  box-shadow:0 0 0 1.2px rgba(90,170,255,.8),0 0 14px rgba(80,120,255,.45);
+  color:#bfe6ff;
+}
+.nav-cta{
+  font-size:clamp(.68rem,.92vw,.88rem);font-weight:600;
+  padding:10px 16px;border-radius:10px;
+  background:var(--nav-dark);color:var(--text);
+  border:1px solid rgba(255,255,255,.12);
+  box-shadow:0 4px 14px rgba(0,0,0,.35);
+  transition:transform .2s,box-shadow .2s;cursor:pointer;
+}
+.nav-cta:hover{transform:translateY(-1px);box-shadow:0 6px 18px rgba(80,90,255,.45)}
+
+.toggle-btn { font-size: 1.1rem; padding: 7px 10px; cursor: pointer; transition: transform 0.2s; }
+.toggle-btn:hover { transform: scale(1.1); }
+.lang-btn { font-weight: 700; padding: 7px 10px; cursor: pointer; }
+
+/* ============================================================
+   4. ESCENA Y MONITOR
+   ============================================================ */
+.stage{position:fixed;inset:0;z-index:1}
+.monitor{
+  position:absolute;left:49.6%;top:50%;transform:translateY(-50%);
+  width:min(44vw, 75vh); aspect-ratio:440/432;
+}
+.monitor-body{
+  position:absolute;left:0;right:0;top:0;height:86%;
+  background:linear-gradient(160deg,#2c2c31,#17171a);
+  border-radius:10px;
+  box-shadow:0 30px 60px rgba(0,0,0,.45), inset 0 0 0 2px #3b3b42;
+}
+.monitor-neck{
+  position:absolute;left:42%;width:16%;top:84%;height:11%;
+  background:linear-gradient(90deg,#202024,#3a3a40,#202024);
+}
+.monitor-foot{
+  position:absolute;left:30%;width:40%;top:94%;height:5%;
+  background:linear-gradient(180deg,#34343a,#1a1a1e);
+  border-radius:50%/100% 100% 0 0;
+}
+.monitor-img{position:absolute;inset:0;width:100%;height:100%;object-fit:contain;z-index:3;pointer-events:none}
+
+.screen{
+  position:absolute;left:3.9%;top:3.2%;width:93%;height:74.8%;
+  z-index:2;overflow:hidden;border-radius:4px;
+  background:
+    linear-gradient(rgba(120,110,255,.10) 1px,transparent 1px) 0 0/28px 28px,
+    linear-gradient(90deg,rgba(120,110,255,.10) 1px,transparent 1px) 0 0/28px 28px,
+    radial-gradient(120% 90% at 50% 10%,var(--bg-screen-2),var(--bg-screen-1) 60%,var(--bg-deep));
+}
+.screen-view{
+  position:absolute;inset:0;
+  opacity:0;visibility:hidden;transform:scale(.98);
+  transition:opacity .45s ease,transform .45s ease,visibility .45s;
+}
+.screen-view.active{opacity:1;visibility:visible;transform:none}
+
+.photo-frame{
+  position:absolute;left:23.7%;top:8.7%;width:54%;height:76.8%;
+  border-radius:16px;padding:3px;
+  background:var(--neon);
+  box-shadow:0 0 22px rgba(80,160,255,.65),0 0 60px rgba(160,80,255,.35);
+}
+.photo-frame .photo{
+  width:100%;height:100%;border-radius:13px;
+  background:url("resources/foto-perfil.png") center top/cover,
+             radial-gradient(circle at 50% 35%,#9aa4c0,#3b3f63 70%);
+}
+
+.float-card{
+  position:absolute;padding:8px 10px;border-radius:10px;font-size:clamp(.5rem,.75vw,.72rem);
+  background:rgba(255,255,255,.12);border:1px solid rgba(255,255,255,.28);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  color:var(--text-soft);line-height:1.4;box-shadow:0 6px 18px rgba(0,0,0,.35);
+}
+.float-card b{display:block;color:var(--text);font-weight:600}
+.fc-bars{display:flex;flex-direction:column;gap:5px;width:70px}
+.fc-bars i{display:block;height:5px;border-radius:3px;background:var(--neon);opacity:.9}
+.fc-bars i:nth-child(2){width:70%;opacity:.55}
+.fc-bars i:nth-child(3){width:45%;opacity:.4}
+.fc-orb{width:34px;height:34px;border-radius:50%;background:var(--neon);box-shadow:0 0 16px rgba(120,120,255,.8)}
+
+.screen-view.blank{background:transparent}
+
+.social-panel{
+  position:absolute;left:5%;top:8%;width:88%;height:82%;
+  border-radius:18px;padding:5% 4%;
+  background:rgba(40,40,100,.38);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.28);
+  box-shadow:0 0 26px rgba(90,150,255,.5),inset 0 0 30px rgba(140,90,255,.2);
+}
+.social-panel h3{text-align:center;font-size:clamp(.8rem,1.5vw,1.4rem);font-weight:700;margin-bottom:5%}
+.social-grid{display:grid;grid-template-columns:1fr 1fr;gap:3.5%}
+.social-item{
+  display:flex;align-items:center;gap:10px;padding:10px 12px;border-radius:10px;
+  background:rgba(255,255,255,.10);border:1px solid rgba(255,255,255,.2);
+  transition:background .2s,transform .2s;cursor: pointer;
+}
+.social-item:hover{background:rgba(255,255,255,.2);transform:translateY(-2px)}
+.social-ico{
+  flex:0 0 auto;width:clamp(24px,2.6vw,38px);height:clamp(24px,2.6vw,38px);border-radius:9px;
+  display:grid;place-items:center;font-weight:800;font-size:clamp(.7rem,1.1vw,1rem);color:#fff;
+}
+.social-item b{display:block;font-size:clamp(.62rem,.95vw,.9rem);font-weight:700;}
+.social-item small{display:block;font-size:clamp(.48rem,.7vw,.68rem);color:var(--text-mute)}
+
+/* ============================================================
+   5. VISTAS Y CLICS HABILITADOS
+   ============================================================ */
+.views{position:fixed;inset:0;z-index:10;pointer-events:none}
+.view{
+  position:absolute;inset:0;
+  padding:clamp(86px,17.5vh,150px) 4% 3.5% 12.3%;
+  opacity:0;visibility:hidden;transform:translateY(10px);
+  transition:opacity .4s ease,transform .4s ease,visibility .4s;
+  display:flex;flex-direction:column;
+  height:100vh;overflow-y:auto;overflow-x:hidden;
+  pointer-events:none; 
+}
+.view.active{opacity:1;visibility:visible;transform:none;}
+.col{max-width:min(46%,520px); margin-bottom: 40px; pointer-events:auto;}
+.view[data-view="proyectos"] .col{max-width:none; pointer-events:auto;}
+.view[data-view="proyectos"] .cards, 
+.view[data-view="proyectos"] .card, 
+.view[data-view="proyectos"] button { pointer-events:auto !important; }
+
+.badge-status{
+  display:inline-flex;align-items:center;gap:10px;align-self:flex-start;
+  font-size:clamp(.6rem,.85vw,.8rem);padding:6px 12px;border-radius:var(--radius-pill);
+  background:rgba(30,40,50,.55);border:1px solid rgba(255,255,255,.22);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  margin-bottom:clamp(8px,1.6vh,16px);
+}
+.dot{width:12px;height:12px;border-radius:50%;background:#2ee66f;box-shadow:0 0 10px #2ee66f,0 0 0 3px rgba(46,230,111,.25);animation:pulse 2s infinite}
+@keyframes pulse{50%{box-shadow:0 0 14px #2ee66f,0 0 0 6px rgba(46,230,111,.12)}}
+
+h1,h2.title{
+  font-weight:800;line-height:1.08;letter-spacing:-.5px;
+  text-shadow:0 2px 14px rgba(0,0,0,.45);
+}
+h1{font-size:clamp(1.7rem,3.55vw,3.5rem);margin-bottom:clamp(8px,1.8vh,18px)}
+h2.title{font-size:clamp(1.6rem,3.1vw,3rem);margin-bottom:clamp(6px,1.2vh,12px)}
+.lead{font-size:clamp(.74rem,1.02vw,1rem);color:var(--text-soft);line-height:1.55;margin-bottom:clamp(10px,2vh,20px);text-shadow:0 1px 8px rgba(0,0,0,.4)}
+
+.btn-row{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:clamp(14px,3vh,28px); align-items:center;}
+.btn{
+  display:inline-block;font-size:clamp(.68rem,.92vw,.9rem);font-weight:600;
+  padding:clamp(8px,1.2vh,12px) clamp(16px,1.8vw,24px);border-radius:var(--radius-pill);
+  transition:transform .2s,box-shadow .2s,background .2s;text-align: center;
+}
+.btn:hover{transform:translateY(-2px)}
+.btn-neon{background:var(--neon-btn);color:#fff;box-shadow:0 4px 18px rgba(100,110,255,.55)}
+.btn-neon:hover{box-shadow:0 6px 24px rgba(130,110,255,.8)}
+.btn-ghost{background:rgba(0,0,0,.18);border:1.5px solid rgba(255,255,255,.6);color:var(--text);}
+.btn-ghost:hover{background:rgba(255,255,255,.15)}
+
+.eyebrow{font-size:clamp(.72rem,1vw,.95rem);font-weight:600;margin-bottom:8px;text-shadow:0 1px 6px rgba(0,0,0,.4)}
+.metrics{display:flex;gap:0;margin-bottom:clamp(12px,2.6vh,26px)}
+.metric{padding:0 clamp(12px,1.6vw,22px);border-left:1px solid rgba(255,255,255,.35)}
+.metric:first-child{padding-left:0;border-left:none}
+.metric b{display:block;font-size:clamp(1.1rem,1.9vw,1.9rem);font-weight:700}
+.metric span{font-size:clamp(.58rem,.78vw,.78rem);color:var(--text-soft)}
+
+.tiles{display:flex;gap:clamp(8px,1vw,14px)}
+.tile{
+  width:clamp(74px,8.4vw,98px);height:clamp(50px,6.4vw,64px);
+  display:grid;place-items:center;text-align:center;padding:6px;
+  font-size:clamp(.56rem,.78vw,.78rem);font-weight:600;line-height:1.2;
+  border-radius:10px;background:rgba(235,225,215,.30);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  border:1px solid rgba(255,255,255,.55);
+  box-shadow:0 6px 16px rgba(0,0,0,.25),inset 0 1px 0 rgba(255,255,255,.5);
+  transition:transform .2s;
+}
+.tile:hover{transform:translateY(-3px)}
+
+.filters{display:flex;gap:10px;flex-wrap:wrap;margin:clamp(6px,1.2vh,12px) 0 clamp(10px,2vh,18px)}
+.chip{
+  font-size:clamp(.62rem,.85vw,.82rem);padding:7px 16px;border-radius:var(--radius-pill);
+  background:rgba(30,30,40,.45);border:1px solid rgba(255,255,255,.4);
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+  transition:background .2s,border-color .2s;cursor:pointer;
+}
+.chip:hover{background:rgba(255,255,255,.18)}
+.chip.active{background:rgba(255,255,255,.22);border-color:var(--text);font-weight:600}
+
+.cards{
+  display:grid;grid-template-columns:repeat(4,1fr);gap:1.5%;
+  width:100%;
+}
+.card{
+  display:flex;flex-direction:column;border-radius:16px;padding:10px;
+  background:rgba(20,22,56,.55);
+  -webkit-backdrop-filter:blur(14px);backdrop-filter:blur(14px);
+  border:1px solid rgba(255,255,255,.18);
+  box-shadow:0 12px 30px rgba(0,0,0,.35),0 0 18px rgba(110,110,255,.25);
+  transition:transform .25s,box-shadow .25s,opacity .3s;
+}
+.card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(0,0,0,.45),0 0 24px rgba(130,110,255,.5)}
+.card.hide{display:none}
+.card-thumb{
+  height:140px;border-radius:10px;margin-bottom:10px;position:relative;overflow:hidden;
+  background:linear-gradient(135deg,#1c2150,#2c1a63 60%,#15305e);
+  border:1px solid rgba(255,255,255,.14);display:grid;place-items:center;
+}
+.card-thumb img{width:100%;height:100%;object-fit:cover}
+.card h3{font-size:0.95rem;font-weight:700;margin-top:6px}
+.result{font-size:0.72rem;font-weight:600;line-height:1.3;margin:4px 0 8px}
+.result.g{color:var(--green)}
+.card-actions{display:flex;gap:8px;margin-top:auto}
+
+.view[data-view="sobre"] .lead.big{font-size:clamp(.8rem,1.2vw,1.15rem);margin-bottom:clamp(8px,1.6vh,14px)}
+.bio{font-size:clamp(.66rem,.92vw,.92rem);line-height:1.55;color:var(--text-soft);margin-bottom:clamp(10px,2vh,18px);text-shadow:0 1px 8px rgba(0,0,0,.4)}
+.timeline{position:relative;display:flex;flex-direction:column;gap:clamp(6px,1.1vh,10px);max-width:min(40vw,470px);padding-left:0}
+.timeline::before{content:"";position:absolute;left:-20px;top:14px;bottom:14px;width:2px;background:linear-gradient(180deg,#5c6cff,#a44dff);opacity:.6}
+.tl-item{
+  position:relative;padding:clamp(7px,1.2vh,12px) 14px;border-radius:12px;
+  background:rgba(40,44,70,.55);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border:1px solid rgba(255,255,255,.22);
+  font-size:clamp(.62rem,.88vw,.88rem);
+  display:flex;align-items:center;justify-content:space-between;gap:10px;
+}
+.tl-item::before{
+  content:"";position:absolute;left:-26px;top:50%;transform:translateY(-50%);
+  width:12px;height:12px;border-radius:3px;background:#6a78ff;box-shadow:0 0 10px rgba(110,120,255,.8);
+}
+.tl-item b{display:block;font-weight:600}
+.tl-item small{color:var(--text-mute);font-size:.85em}
+.tl-btn{
+  flex:0 0 auto;font-size:clamp(.58rem,.8vw,.78rem);font-weight:600;padding:7px 12px;border-radius:9px;
+  background:rgba(20,24,60,.75);border:1px solid rgba(120,170,255,.7);
+  box-shadow:0 0 10px rgba(90,140,255,.4);transition:background .2s,transform .2s;color: #fff;cursor:pointer;
+}
+.tl-btn:hover{background:rgba(60,70,150,.9);transform:translateY(-1px)}
+.about-actions{margin-top:clamp(10px,2vh,18px)}
+
+.info-card{
+  position:absolute;padding:8px 11px;border-radius:9px;
+  font-size:clamp(.5rem,.76vw,.76rem);line-height:1.35;
+  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.35);
+  -webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);
+  box-shadow:0 6px 16px rgba(0,0,0,.35);
+}
+.info-card small{display:block;}
+.info-card b{font-weight:700}
+.code-card{
+  position:absolute;padding:8px 10px;border-radius:8px;
+  font-family:'SFMono-Regular',Consolas,monospace;font-size:clamp(.42rem,.62vw,.62rem);line-height:1.5;
+  background:rgba(25,20,60,.65);border:1px solid rgba(255,255,255,.22);color:#e7b5ff;
+  -webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);
+}
+
+.form{display:flex;flex-direction:column;gap:clamp(8px,1.5vh,14px);max-width:min(40vw,470px)}
+.field{
+  width:100%;padding:clamp(9px,1.4vh,13px) 14px;border-radius:12px;
+  font:inherit;font-size:clamp(.7rem,.95vw,.92rem);
+  background:rgba(60,50,80,.30);
+  -webkit-backdrop-filter:blur(12px);backdrop-filter:blur(12px);
+  border:1px solid rgba(190,170,255,.45);
+  outline:none;transition:border-color .2s,box-shadow .2s;
+}
+.field:focus{border-color:#7fc4ff;box-shadow:0 0 0 3px rgba(80,150,255,.28)}
+textarea.field{resize:none;height:clamp(78px,17vh,130px)}
+.btn-send{
+  width:100%;padding:clamp(10px,1.5vh,14px);border-radius:8px;
+  background:#1d6fd8;color:#fff;font-weight:600;font-size:clamp(.72rem,.95vw,.92rem);
+  box-shadow:0 4px 14px rgba(29,111,216,.5);transition:background .2s,transform .2s;cursor:pointer;
+}
+.btn-send:hover{background:#2a82f0;transform:translateY(-1px)}
+.form-note{font-size:.7rem;color:var(--text-soft);min-height:1em}
+
+/* ============================================================
+   6. MODALES
+   ============================================================ */
+.modal-backdrop{
+  position:fixed;inset:0;z-index:100;display:grid;place-items:center;padding:20px;
+  background:rgba(8,6,24,.5);
+  -webkit-backdrop-filter:blur(5px);backdrop-filter:blur(5px);
+  opacity:0;visibility:hidden;transition:opacity .3s,visibility .3s;
+  pointer-events:none;
+}
+.modal-backdrop.open{opacity:1;visibility:visible;pointer-events:auto;}
+.modal{
+  position:relative;width:min(100%,600px);max-height:88vh;overflow:auto;
+  padding:24px;border-radius:20px;
+  background:rgba(20,22,56,.85);
+  -webkit-backdrop-filter:blur(22px);backdrop-filter:blur(22px);
+  border:1px solid rgba(255,255,255,.3);
+  box-shadow:0 24px 70px rgba(0,0,0,.6);
+  transform:translateY(14px) scale(.97);transition:transform .3s;
+}
+body.light-mode .modal { background: rgba(255, 255, 255, 0.95); border: 1px solid #cbd5e1; }
+.modal-backdrop.open .modal{transform:none}
+.modal h3{font-size:1.4rem;font-weight:700;margin-bottom:4px}
+.modal .sub{font-size:.85rem;color:var(--text-soft);margin-bottom:16px}
+.modal-close{
+  position:absolute;top:14px;right:14px;width:34px;height:34px;border-radius:9px;
+  display:grid;place-items:center;font-size:1.2rem;
+  background:rgba(255,255,255,.18);border:1px solid rgba(255,255,255,.4);
+  transition:background .2s;cursor:pointer;color:var(--text);
+}
+.modal-close:hover{background:rgba(255,255,255,.32)}
+
+.cert-grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.cert{
+  padding:12px;border-radius:12px;display:flex;flex-direction:column;gap:10px;
+  background:rgba(255,255,255,.14);border:1px solid rgba(255,255,255,.35);
+}
+.cert-head{display:flex;align-items:center;gap:10px;min-height:46px}
+.cert-logo{
+  flex:0 0 auto;width:42px;height:42px;border-radius:10px;display:grid;place-items:center;
+  background:rgba(255,255,255,.22);font-weight:800;font-size:.7rem;color:var(--text-soft);
+}
+.cert-head span{font-size:.82rem;font-weight:600;line-height:1.25}
+.cert a{
+  display:flex;align-items:center;justify-content:center;gap:8px;
+  padding:7px;border-radius:8px;font-size:.78rem;font-weight:500;
+  background:rgba(35,40,80,.55);border:1px solid rgba(255,255,255,.3);color: #fff;
+}
+.cert a:hover{background:rgba(70,80,160,.8)}
+
+.cv-sec{margin-bottom:16px}
+.cv-sec h4{font-size:.78rem;letter-spacing:1px;text-transform:uppercase;color:#3ad7ff;margin-bottom:6px}
+.cv-sec p,.cv-sec li{font-size:.86rem;line-height:1.5;}
+.cv-head{display:flex;gap:14px;align-items:center;margin-bottom:16px;padding-right:44px}
+.cv-photo{width:64px;height:64px;border-radius:50%;background:url("resources/foto-perfil.png") center top/cover,var(--neon);border:2px solid rgba(255,255,255,.6)}
+.cv-actions{display:flex;gap:10px;flex-wrap:wrap;margin-top:6px}
+
+@media (max-width:1000px){
+  body{overflow:auto}
+  .stage{display:none}
+  .views{position:static}
+  .view{position:relative;display:none;padding:110px 6% 40px; height:auto; overflow:visible;}
+  .view.active{display:flex;transform:none}
+  .col,.timeline,.form,.cards{max-width:none;width:100%}
+  .cards{grid-template-columns:1fr}
+  .nav-link:not(.active){display:none}
+  .nav-link.active,.nav-cta{display:inline-block}
+  .header{background:rgba(15,12,35,.6);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px)}
+  .brand span{display:none}
+  .timeline::before,.tl-item::before{display:none}
+  .cert-grid{grid-template-columns:1fr}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+
+<body data-view="inicio">
+
+<header class="header">
+  <div class="brand">
+    <span class="brand-logo" role="img" aria-label="Logotipo institucional"></span>
+    <div>
+      <strong data-i18n="brand_name">Oscar Mauricio Ramos García</strong> 
+      <span data-i18n="brand_title">/ Licenciado en Ingeniería de Software</span>
+    </div>
+  </div>
+  <nav class="nav" aria-label="Principal">
+    <span class="nav-avatar" aria-hidden="true"></span>
+    <button class="nav-link active" data-go="inicio" data-i18n="nav_inicio">Inicio</button>
+    <button class="nav-link" data-go="proyectos" data-i18n="nav_proyectos">Proyectos</button>
+    <button class="nav-link" data-go="sobre" data-i18n="nav_sobre">Sobre mí</button>
+    <button class="nav-link" data-go="contacto" data-i18n="nav_contacto">Contacto</button>
+    <button class="nav-link lang-btn" id="lang-toggle">EN</button>
+    <button class="nav-link toggle-btn" id="theme-toggle" aria-label="Cambiar Tema">☀️</button>
+    <button class="nav-cta" data-go="contacto" data-i18n="nav_hablemos">Hablemos</button>
+  </nav>
+</header>
+
+<div class="stage" aria-hidden="false">
+  <div class="monitor">
+    <div class="monitor-body"></div>
+    <div class="monitor-neck"></div>
+    <div class="monitor-foot"></div>
+
+    <div class="screen">
+      <div class="screen-view active" data-screen="inicio">
+        <div class="photo-frame"><div class="photo" role="img" aria-label="Fotografía de Oscar Mauricio Ramos García"></div></div>
+        <div class="float-card" style="left:4%;top:34%"><div class="fc-bars"><i></i><i></i><i></i></div></div>
+        <div class="float-card" style="right:3%;top:10%"><b data-i18n="ind_lbl">Indicadores</b><div class="fc-bars" style="margin-top:6px"><i></i><i></i></div></div>
+        <div class="float-card" style="left:10%;bottom:12%"><div class="fc-orb"></div></div>
+        <div class="float-card" style="right:4%;bottom:14%"><b data-i18n="est_lbl">Estrategia</b><div class="fc-bars" style="margin-top:6px"><i></i><i></i><i></i></div></div>
+      </div>
+      <div class="screen-view blank" data-screen="proyectos"></div>
+      <div class="screen-view" data-screen="sobre">
+        <div class="photo-frame"><div class="photo"></div></div>
+        <div class="info-card" style="left:4%;top:30%"><small data-i18n="ubi_title">Ubicación:</small><b>Estado de México</b></div>
+        <div class="info-card" style="left:4%;bottom:14%"><small data-i18n="int_title">Intereses:</small><b data-i18n="int_val">Calidad, liderazgo, arquitectura</b></div>
+        <div class="code-card" style="right:3%;top:12%">Pasión por =<br>['procesos',<br>'resultados',<br>'calidad'];</div>
+        <div class="code-card" style="right:3%;bottom:12%">Enfoque =<br>['equipos',<br>'valor',<br>'escala'];</div>
+      </div>
+      
+      <div class="screen-view" data-screen="contacto">
+        <div class="social-panel">
+          <h3 data-i18n="redes_tit">Encuéntrame en mis redes</h3>
+          <div class="social-grid">
+            <a class="social-item" href="https://www.linkedin.com/in/oscar-mauricio-ramos-garc%C3%ADa-031533442/" target="_blank" rel="noopener"><span class="social-ico" style="background:#0a66c2">in</span><span><b>LinkedIn</b><small data-i18n="redes_lk">Ver mi perfil</small></span></a>
+            <a class="social-item" href="https://github.com/Surthur11" target="_blank" rel="noopener"><span class="social-ico" style="background:#24292f">GH</span><span><b>GitHub</b><small data-i18n="redes_gh">Ver repositorios</small></span></a>
+            <a class="social-item" href="https://wa.me/527223168377" target="_blank" rel="noopener"><span class="social-ico" style="background:#25d366">W</span><span><b>WhatsApp</b><small data-i18n="redes_wa">Mensaje directo</small></span></a>
+            <a class="social-item" href="mailto:ramosgarciaoscarm@gmail.com" target="_blank" rel="noopener"><span class="social-ico" style="background:#1877f2">@</span><span><b data-i18n="redes_em">Correo</b><small data-i18n="redes_em_sub">Escribir email</small></span></a>
+          </div>
+        </div>
+      </div>
+    </div>
+    <img class="monitor-img" src="resources/monitor.png" alt="" onerror="this.remove()">
+  </div>
+</div>
+
+<main class="views">
+  <!-- INICIO -->
+  <section class="view active" data-view="inicio" aria-labelledby="t-inicio">
+    <div class="col">
+      <span class="badge-status"><span data-i18n="badge_opt">Abierto a nuevas oportunidades</span><i class="dot"></i></span>
+      <h1 id="t-inicio" data-i18n="h1_main">Hola, soy Oscar Mauricio Ramos García</h1>
+      <p class="lead" data-i18n="p_main">Licenciado en Ingeniería de Software que lidera equipos y proyectos para convertir necesidades del negocio en sistemas confiables, medibles y listos para crecer. Transformo ideas en soluciones de negocio y arquitectura escalable.</p>
+      
+      <div class="btn-row">
+        <button class="btn btn-neon" data-go="proyectos" data-i18n="btn_explore">Explorar proyectos</button>
+        <a class="btn btn-neon" href="resources/CV_Oscar_Mauricio.pdf" download="CV_Oscar_Mauricio.pdf" data-i18n="btn_dl_cv">Descargar CV</a>
+        <button class="btn btn-ghost" data-go="contacto" data-i18n="btn_sched">Agendar reunión</button>
+      </div>
+
+      <p class="eyebrow" data-i18n="ind_key">Indicadores clave</p>
+      <div class="metrics">
+        <div class="metric"><b>+3</b><span data-i18n="m_exp">Años de experiencia</span></div>
+        <div class="metric"><b>4</b><span data-i18n="m_proj">Proyectos clave</span></div>
+        <div class="metric"><b>100%</b><span data-i18n="m_deliv">Entregas a tiempo</span></div>
+      </div>
+
+      <p class="eyebrow" data-i18n="comp_title">Competencias</p>
+      <div class="tiles">
+        <div class="tile" data-i18n="c_1">Gestión de Proyectos</div>
+        <div class="tile" data-i18n="c_2">Calidad ISO</div>
+        <div class="tile" data-i18n="c_3">Scrum</div>
+        <div class="tile" data-i18n="c_4">Liderazgo Técnico</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROYECTOS -->
+  <section class="view" data-view="proyectos" aria-labelledby="t-proy">
+    <div class="col">
+      <span class="badge-status"><span data-i18n="badge_opt">Abierto a nuevas oportunidades</span><i class="dot"></i></span>
+      <h2 class="title" id="t-proy" data-i18n="proj_title">Mis Proyectos</h2>
+      <p class="lead" style="margin-bottom:12px" data-i18n="proj_sub">Casos reales donde el liderazgo y la arquitectura resolvieron retos de negocio.</p>
+
+      <div class="filters" role="tablist" aria-label="Filtrar proyectos">
+        <button class="chip active" data-filter="todos" data-i18n="f_all">Todos</button>
+        <button class="chip" data-filter="gestion" data-i18n="f_mgmt">Gestión</button>
+        <button class="chip" data-filter="calidad" data-i18n="f_qual">Calidad y Procesos</button>
+        <button class="chip" data-filter="estrategia" data-i18n="f_arch">Arquitectura</button>
+      </div>
+
+      <div class="cards">
+        
+        <!-- Proyecto 1 -->
+        <article class="card" data-cat="gestion estrategia">
+          <div class="card-thumb">
+            <img src="resources/Imagen blackbrothers.png" alt="Tienda Black Brothers">
+          </div>
+          <h3 data-i18n="p1_name">Tienda Black Brothers</h3>
+          <p class="result g" data-i18n="p1_res">[Reducción del 30% en discrepancias]</p>
+          <div class="card-actions">
+            <button class="btn btn-neon" onclick="openProjectModal('modal-p1')" style="width:100%; padding: 6px;" data-i18n="btn_details">Ver detalles</button>
+          </div>
+        </article>
+
+        <!-- Proyecto 2 -->
+        <article class="card" data-cat="gestion calidad">
+          <div class="card-thumb">
+            <img src="resources/foto-optem.png" alt="Agenda OPTEM">
+          </div>
+          <h3 data-i18n="p2_name">Agenda OPTEM</h3>
+          <p class="result g" data-i18n="p2_res">[Optimización del 40% en planificación]</p>
+          <div class="card-actions">
+            <button class="btn btn-neon" onclick="openProjectModal('modal-p2')" style="width:100%; padding: 6px;" data-i18n="btn_details">Ver detalles</button>
+          </div>
+        </article>
+
+        <!-- Proyecto 3 -->
+        <article class="card" data-cat="estrategia">
+          <div class="card-thumb">
+            <img src="resources/foto-compilador.jpeg" alt="Compilador JODA">
+          </div>
+          <h3 data-i18n="p3_name">Compilador JODA</h3>
+          <p class="result g" data-i18n="p3_res">[100% de precisión léxica]</p>
+          <div class="card-actions">
+            <button class="btn btn-neon" onclick="openProjectModal('modal-p3')" style="width:100%; padding: 6px;" data-i18n="btn_details">Ver detalles</button>
+          </div>
+        </article>
+
+        <!-- Proyecto 4 -->
+        <article class="card" data-cat="calidad">
+          <div class="card-thumb">
+            <img src="resources/foto-biblioteca.png" alt="Gestión de Biblioteca">
+          </div>
+          <h3 data-i18n="p4_name">Gestión de Biblioteca</h3>
+          <p class="result g" data-i18n="p4_res">[−50% en tiempo de trámite]</p>
+          <div class="card-actions">
+            <button class="btn btn-neon" onclick="openProjectModal('modal-p4')" style="width:100%; padding: 6px;" data-i18n="btn_details">Ver detalles</button>
+          </div>
+        </article>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SOBRE MÍ -->
+  <section class="view" data-view="sobre" aria-labelledby="t-sobre">
+    <div class="col">
+      <span class="badge-status"><span data-i18n="badge_opt">Abierto a nuevas oportunidades</span><i class="dot"></i></span>
+      <h2 class="title" id="t-sobre" data-i18n="nav_sobre">Sobre mí</h2>
+      <p class="lead big" data-i18n="about_sub">Comprometido con convertir necesidades de negocio en soluciones sostenibles y de alto impacto.</p>
+      <p class="bio" data-i18n="about_bio">Hola, soy Oscar Mauricio Ramos García. Soy Licenciado en Ingeniería de Software y me enfoco en planear, coordinar y entregar proyectos con estándares de calidad, guiando equipos multidisciplinarios hacia resultados medibles.</p>
+      
+      <div class="timeline">
+        <div class="tl-item"><div><b data-i18n="exp_role">Ingeniero de Software / Líder Técnico</b><small data-i18n="exp_time">2024 – Presente</small></div></div>
+        <div class="tl-item">
+          <div><b data-i18n="edu_title">Educación y Certificaciones:</b> <span style="color:var(--text-soft)" data-i18n="edu_val">Licenciatura en Ingeniería de Software.</span></div>
+          <button class="tl-btn" data-open="modal-cert" data-i18n="btn_certs">Ver certificados ↗</button>
+        </div>
+      </div>
+      <div class="btn-row about-actions">
+        <button class="btn btn-neon" data-open="modal-cv" data-i18n="btn_view_cv">Ver CV Ejecutivo</button>
+      </div>
+    </div>
+  </section>
+
+  <!-- CONTACTO -->
+  <section class="view" data-view="contacto" aria-labelledby="t-cont">
+    <div class="col">
+      <span class="badge-status"><span data-i18n="badge_opt">Abierto a nuevas oportunidades</span><i class="dot"></i></span>
+      <h2 class="title" id="t-cont" data-i18n="cont_title">Ponte en contacto</h2>
+      <p class="lead" data-i18n="cont_sub">¿Tienes un proyecto en mente o buscas sumar liderazgo a tu equipo? Conversemos.</p>
+      <form class="form" id="contact-form" novalidate>
+        <input class="field" type="text" name="nombre" data-i18n-ph="ph_name" placeholder="Nombre" required>
+        <input class="field" type="email" name="correo" data-i18n-ph="ph_email" placeholder="Correo electrónico" required>
+        <input class="field" type="text" name="asunto" data-i18n-ph="ph_subj" placeholder="Asunto">
+        <textarea class="field" name="mensaje" data-i18n-ph="ph_msg" placeholder="Mensaje" required></textarea>
+        <button class="btn-send" type="submit" data-i18n="btn_send">Enviar mensaje (Abrir correo)</button>
+        <p class="form-note" id="form-note" role="status"></p>
+      </form>
+    </div>
+  </section>
+</main>
+
+<!-- MODALES DE PROYECTOS -->
+<div class="modal-backdrop" id="modal-p1" role="dialog" aria-modal="true">
+  <div class="modal wide neon-border">
+    <button class="modal-close" onclick="closeProjectModal('modal-p1')">✕</button>
+    <h3 data-i18n="p1_name">Tienda Black Brothers</h3>
+    <p class="sub" data-i18n="p1_sub">Sistema de Gestión Comercial y Control de Inventarios</p>
+    <div class="cv-sec">
+      <h4 data-i18n="mod_prob">1) Problema de negocio</h4>
+      <p data-i18n="p1_p">Los procesos manuales de control de inventario y registro de ventas provocaban mermas, errores humanos y lentitud en la atención a los clientes.</p>
+    </div>
+    <div class="cv-sec">
+      <h4 data-i18n="mod_sol">2) Descripción y Solución</h4>
+      <p data-i18n="p1_s">Implementación de un sistema de gestión integral para automatizar el flujo de caja, el control de stock en tiempo real y la generación de reportes comerciales.</p>
+    </div>
+    <div class="cv-sec">
+      <h4 data-i18n="mod_rol">3) Rol como líder de desarrollo</h4>
+      <p data-i18n="p1_r">Ingeniero de Software y jefe de proyecto, responsable del diseño de bases de datos relacionales, validación de integridad y pruebas de rendimiento operativo.</p>
+    </div>
+    <p class="result g" style="margin-top:10px;" data-i18n="p1_res_full">Resultado medible: Reducción del 30% en discrepancias de inventario.</p>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal-p2" role="dialog" aria-modal="true">
+  <div class="modal wide neon-border">
+    <button class="modal-close" onclick="closeProjectModal('modal-p2')">✕</button>
+    <h3 data-i18n="p2_name">Agenda OPTEM</h3>
+    <p class="sub" data-i18n="p2_sub">Agenda Virtual Inteligente para la Gestión Académica</p>
+    <div class="cv-sec">
+      <h4 data-i18n="mod_prob">1) Problema de negocio</h4>
+      <p data-i18n="p2_p">La saturación de actividades académicas y la falta de centralización en la gestión de horarios generaban desorganización y retrasos en el cumplimiento de metas.</p>
+    </div>
+    <div class="cv-sec">
+      <h4 data-i18n="mod_sol">2) Descripción y Solución</h4>
+      <p data-i18n="p2_s">Desarrollo de una aplicación de escritorio local estructurada bajo una arquitectura modular robusta en Java y SQLite para automatizar la calendarización y centralizar tareas.</p>
+    </div>
+    <div class="cv-sec">
+      <h4 data-i18n="mod_rol">3) Rol como líder de desarrollo</h4>
+      <p data-i18n="p2_r">Líder de desarrollo y arquitectura, encargado del análisis de requerimientos (FPA), modelado del sistema y coordinación de la lógica de negocio.</p>
+    </div>
+    <p class="result g" style="margin-top:10px;" data-i18n="p2_res_full">Resultado medible: Optimización del 40% en planificación semanal.</p>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal-p3" role="dialog" aria-modal="true">
+  <div class="modal wide neon-border">
+    <button class="modal-close" onclick="closeProjectModal('modal-p3')">✕</button>
+    <h3 data-i18n="p3_name">Compilador JODA</h3>
+    <p class="sub" data-i18n="p3_sub">Herramienta de Análisis Léxico y Sintáctico</p>
+    <div class="cv-sec">
+      <h4 data-i18n="mod_prob">1) Problema de negocio</h4>
+      <p data-i18n="p3_p">La necesidad de procesar y validar sintácticamente instrucciones de lenguajes personalizados requería una herramienta de análisis eficiente y automatizada.</p>
+    </div>
+    <div class="cv-sec">
+      <h4 data-i18n="mod_sol">2) Descripción y Solución</h4>
+      <p data-i18n="p3_s">Diseño de un compilador de estructura ligera capaz de realizar análisis de tokens, validación de reglas formales y generación de reportes de errores estructurados.</p>
+    </div>
+    <div class="cv-sec">
+      <h4 data-i18n="mod_rol">3) Rol como líder de desarrollo</h4>
+      <p data-i18n="p3_r">Desarrollador principal de la lógica de compilación, aplicando autómatas y principios de lenguajes formales para asegurar un procesamiento riguroso.</p>
+    </div>
+    <p class="result g" style="margin-top:10px;" data-i18n="p3_res_full">Resultado medible: 100% de precisión en detección de errores.</p>
+  </div>
+</div>
+
+<div class="modal-backdrop" id="modal-p4" role="dialog" aria-modal="true">
+  <div class="modal wide neon-border">
+    <button class="modal-close" onclick="closeProjectModal('modal-p4')">✕</button>
+    <h3 data-i18n="p4_name">Gestión de Biblioteca</h3>
+    <p class="sub" data-i18n="p4_sub">Sistema Automatizado de Préstamos y Control Bibliotecario</p>
+    <div class="cv-sec">
+      <h4 data-i18n="mod_prob">1) Problema de negocio</h4>
+      <p data-i18n="p4_p">La lentitud en los procesos de préstamo, devolución y rastreo de acervo bibliográfico afectaba la disponibilidad de recursos para los usuarios.</p>
+    </div>
+    <div class="cv-sec">
+      <h4 data-i18n="mod_sol">2) Descripción y Solución</h4>
+      <p data-i18n="p4_s">Creación de un software automatizado de control bibliotecario que agiliza el registro de usuarios, el catálogo de libros y el control estricto de fechas de entrega.</p>
+    </div>
+    <div class="cv-sec">
+      <h4 data-i18n="mod_rol">3) Rol como líder de desarrollo</h4>
+      <p data-i18n="p4_r">Líder técnico, a cargo del diseño de la interfaz de usuario orientada a la experiencia del operador y la estructuración lógica de los módulos de control.</p>
+    </div>
+    <p class="result g" style="margin-top:10px;" data-i18n="p4_res_full">Resultado medible: Disminución del tiempo de trámite en más de 50%.</p>
+  </div>
+</div>
+
+<!-- MODAL CERTIFICADOS -->
+<div class="modal-backdrop" id="modal-cert" role="dialog" aria-modal="true">
+  <div class="modal wide neon-border">
+    <button class="modal-close" data-close aria-label="Cerrar">✕</button>
+    <h3 data-i18n="mod_cert_title">Mis Certificados</h3>
+    <p class="sub" data-i18n="mod_cert_sub">Certificaciones oficiales y acreditaciones profesionales</p>
+    <div class="cert-grid">
+      <div class="cert">
+        <div class="cert-head"><span class="cert-logo">SQL</span><span data-i18n="cert_1_title">Bases de datos SQL (Datainsights Academy)</span></div>
+        <a href="resources/cert-bases.jpg" target="_blank" rel="noopener" data-i18n="btn_verify">Verificar credencial ↗</a>
+      </div>
+      <div class="cert">
+        <div class="cert-head"><span class="cert-logo">WEB</span><span data-i18n="cert_2_title">Programación en HTML, CSS, JS (Nexus Web Academy)</span></div>
+        <a href="resources/cert-html.jpg" target="_blank" rel="noopener" data-i18n="btn_verify">Verificar credencial ↗</a>
+      </div>
+      <div class="cert">
+        <div class="cert-head"><span class="cert-logo">JAVA</span><span data-i18n="cert_3_title">Programación en Java (Apex Academy)</span></div>
+        <a href="resources/cert-java.jpg" target="_blank" rel="noopener" data-i18n="btn_verify">Verificar credencial ↗</a>
+      </div>
+      <div class="cert">
+        <div class="cert-head"><span class="cert-logo">PY</span><span data-i18n="cert_4_title">Programación en Python y Fotografía Digital (Apex Academy)</span></div>
+        <a href="resources/cert-python.jpg" target="_blank" rel="noopener" data-i18n="btn_verify">Verificar credencial ↗</a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- MODAL CV -->
+<div class="modal-backdrop" id="modal-cv" role="dialog" aria-modal="true">
+  <div class="modal wide neon-border">
+    <button class="modal-close" data-close aria-label="Cerrar">✕</button>
+    <div class="cv-head">
+      <div class="cv-photo"></div>
+      <div>
+        <h3>Oscar Mauricio Ramos García</h3>
+        <p data-i18n="cv_sub">Licenciado en Ingeniería de Software · CV Ejecutivo</p>
+      </div>
+    </div>
+    <div class="cv-sec">
+      <h4 data-i18n="cv_profile">Perfil profesional</h4>
+      <p data-i18n="cv_profile_text">Ingeniero de Software enfocado en la arquitectura de sistemas, gestión de proyectos y control de calidad bajo estándares rigurosos.</p>
+    </div>
+    <div class="cv-actions">
+      <a class="btn btn-neon" href="resources/CV_Oscar_Mauricio.pdf" download data-i18n="btn_dl_pdf">Descargar PDF</a>
+      <button class="btn btn-ghost" data-close data-i18n="btn_close">Cerrar</button>
+    </div>
+  </div>
+</div>
+
+<script>
+  window.openProjectModal = function(id) {
+    const m = document.getElementById(id);
+    if(m) m.classList.add('open');
+  };
+
+  window.closeProjectModal = function(id) {
+    const m = document.getElementById(id);
+    if(m) m.classList.remove('open');
+  };
+
+(function(){
+  const $  = (s,c=document)=>c.querySelector(s);
+  const $$ = (s,c=document)=>[...c.querySelectorAll(s)];
+
+  function go(name){
+    document.body.dataset.view = name;
+    $$('.view').forEach(v=>v.classList.toggle('active', v.dataset.view===name));
+    $$('.screen-view').forEach(v=>v.classList.toggle('active', v.dataset.screen===name));
+    $$('.nav-link[data-go]').forEach(b=>b.classList.toggle('active', b.dataset.go===name));
+    history.replaceState(null,'','#'+name);
+    window.scrollTo(0,0);
+  }
+  $$('[data-go]').forEach(b=>b.addEventListener('click',()=>go(b.dataset.go)));
+  const initial = location.hash.replace('#','');
+  if(['inicio','proyectos','sobre','contacto'].includes(initial)) go(initial);
+
+  $$('.chip').forEach(chip=>{
+    chip.addEventListener('click',()=>{
+      $$('.chip').forEach(c=>c.classList.remove('active'));
+      chip.classList.add('active');
+      const f = chip.dataset.filter;
+      $$('.card').forEach(card=>{
+        card.classList.toggle('hide', f!=='todos' && !card.dataset.cat.split(' ').includes(f));
+      });
+    });
+  });
+
+  function openModal(id){
+    const m = document.getElementById(id); if(!m) return;
+    m.classList.add('open');
+  }
+  function closeModal(m){
+    m.classList.remove('open');
+  }
+  $$('[data-open]').forEach(b=>b.addEventListener('click',()=>openModal(b.dataset.open)));
+  $$('.modal-backdrop').forEach(m=>{
+    m.addEventListener('click',e=>{ if(e.target===m || e.target.closest('[data-close]')) closeModal(m); });
+  });
+  document.addEventListener('keydown',e=>{
+    if(e.key==='Escape') $$('.modal-backdrop.open').forEach(m=>closeModal(m));
+  });
+
+  const TU_CORREO = 'ramosgarciaoscarm@gmail.com';
+  $('#contact-form').addEventListener('submit',e=>{
+    e.preventDefault();
+    const f = e.target, note = $('#form-note');
+    if(!f.nombre.value.trim() || !f.correo.value.trim() || !f.mensaje.value.trim()){
+      note.textContent = currentLang === 'es' ? 'Completa nombre, correo y mensaje.' : 'Fill in name, email and message.'; return;
+    }
+    const body = `Nombre: ${f.nombre.value}\nCorreo: ${f.correo.value}\n\n${f.mensaje.value}`;
+    location.href = `mailto:${TU_CORREO}?subject=${encodeURIComponent(f.asunto.value||'Contacto')}&body=${encodeURIComponent(body)}`;
+    note.textContent = currentLang === 'es' ? 'Abriendo tu cliente de correo...' : 'Opening your mail client...';
+  });
+
+  const themeBtn = document.getElementById('theme-toggle');
+  themeBtn.addEventListener('click', () => {
+    document.body.classList.toggle('light-mode');
+    themeBtn.textContent = document.body.classList.contains('light-mode') ? '🌙' : '☀️';
+  });
+
+  /* ---------- SISTEMA DE TRADUCCIÓN (IDIOMAS) ---------- */
+  const translations = {
+    es: {
+      brand_title: "/ Licenciado en Ingeniería de Software",
+      nav_inicio: "Inicio", nav_proyectos: "Proyectos", nav_sobre: "Sobre mí", nav_contacto: "Contacto", nav_hablemos: "Hablemos",
+      ind_lbl: "Indicadores", est_lbl: "Estrategia", ubi_title: "Ubicación:", int_title: "Intereses:", int_val: "Calidad, liderazgo, arquitectura",
+      redes_tit: "Encuéntrame en mis redes", redes_lk: "Ver mi perfil", redes_gh: "Ver repositorios", redes_wa: "Mensaje directo", redes_em: "Correo", redes_em_sub: "Escribir email",
+      badge_opt: "Abierto a nuevas oportunidades",
+      h1_main: "Hola, soy Oscar Mauricio Ramos García",
+      p_main: "Licenciado en Ingeniería de Software que lidera equipos y proyectos para convertir necesidades del negocio en sistemas confiables, medibles y listos para crecer. Transformo ideas en soluciones de negocio y arquitectura escalable.",
+      btn_explore: "Explorar proyectos", btn_dl_cv: "Descargar CV", btn_sched: "Agendar reunión",
+      ind_key: "Indicadores clave", m_exp: "Años de experiencia", m_proj: "Proyectos clave", m_deliv: "Entregas a tiempo",
+      comp_title: "Competencias", c_1: "Gestión de Proyectos", c_2: "Calidad ISO", c_3: "Scrum", c_4: "Liderazgo Técnico",
+      proj_title: "Mis Proyectos", proj_sub: "Casos reales donde el liderazgo y la arquitectura resolvieron retos de negocio.",
+      f_all: "Todos", f_mgmt: "Gestión", f_qual: "Calidad y Procesos", f_arch: "Arquitectura",
+      p1_name: "Tienda Black Brothers", p1_res: "[Reducción del 30% en discrepancias]", p1_sub: "Sistema de Gestión Comercial y Control de Inventarios", p1_p: "Los procesos manuales de control de inventario y registro de ventas provocaban mermas, errores humanos y lentitud en la atención a los clientes.", p1_s: "Implementación de un sistema de gestión integral para automatizar el flujo de caja, el control de stock en tiempo real y la generación de reportes comerciales.", p1_r: "Ingeniero de Software y jefe de proyecto, responsable del diseño de bases de datos relacionales, validación de integridad y pruebas de rendimiento operativo.", p1_res_full: "Resultado medible: Reducción del 30% en discrepancias de inventario.",
+      p2_name: "Agenda OPTEM", p2_res: "[Optimización del 40% en planificación]", p2_sub: "Agenda Virtual Inteligente para la Gestión Académica", p2_p: "La saturación de actividades académicas y la falta de centralización en la gestión de horarios generaban desorganización y retrasos en el cumplimiento de metas.", p2_s: "Desarrollo de una aplicación de escritorio local estructurada bajo una arquitectura modular robusta en Java y SQLite para automatizar la calendarización y centralizar tareas.", p2_r: "Líder de desarrollo y arquitectura, encargado del análisis de requerimientos (FPA), modelado del sistema y coordinación de la lógica de negocio.", p2_res_full: "Resultado medible: Optimización del 40% en planificación semanal.",
+      p3_name: "Compilador JODA", p3_res: "[100% de precisión léxica]", p3_sub: "Herramienta de Análisis Léxico y Sintáctico", p3_p: "La necesidad de procesar y validar sintácticamente instrucciones de lenguajes personalizados requería una herramienta de análisis eficiente y automatizada.", p3_s: "Diseño de un compilador de estructura ligera capaz de realizar análisis de tokens, validación de reglas formales y generación de reportes de errores estructurados.", p3_r: "Desarrollador principal de la lógica de compilación, aplicando autómatas y principios de lenguajes formales para asegurar un procesamiento riguroso.", p3_res_full: "Resultado medible: 100% de precisión en detección de errores.",
+      p4_name: "Gestión de Biblioteca", p4_res: "[−50% en tiempo de trámite]", p4_sub: "Sistema Automatizado de Préstamos y Control Bibliotecario", p4_p: "La lentitud en los procesos de préstamo, devolución y rastreo de acervo bibliográfico afectaba la disponibilidad de recursos para los usuarios.", p4_s: "Creación de un software automatizado de control bibliotecario que agiliza el registro de usuarios, el catálogo de libros y el control estricto de fechas de entrega.", p4_r: "Líder técnico, a cargo del diseño de la interfaz de usuario orientada a la experiencia del operador y la estructuración lógica de los módulos de control.", p4_res_full: "Resultado medible: Disminución del tiempo de trámite en más de 50%.",
+      btn_details: "Ver detalles",
+      nav_sobre: "Sobre mí", about_sub: "Comprometido con convertir necesidades de negocio en soluciones sostenibles y de alto impacto.",
+      about_bio: "Hola, soy Oscar Mauricio Ramos García. Soy Licenciado en Ingeniería de Software y me enfoco en planear, coordinar y entregar proyectos con estándares de calidad, guiando equipos multidisciplinarios hacia resultados medibles.",
+      exp_role: "Ingeniero de Software / Líder Técnico", exp_time: "2024 – Presente",
+      edu_title: "Educación y Certificaciones:", edu_val: "Licenciatura en Ingeniería de Software.",
+      btn_certs: "Ver certificados ↗", btn_view_cv: "Ver CV Ejecutivo",
+      cont_title: "Ponte en contacto", cont_sub: "¿Tienes un proyecto en mente o buscas sumar liderazgo a tu equipo? Conversemos.",
+      ph_name: "Nombre", ph_email: "Correo electrónico", ph_subj: "Asunto", ph_msg: "Mensaje", btn_send: "Enviar mensaje (Abrir correo)",
+      mod_prob: "1) Problema de negocio", mod_sol: "2) Descripción y Solución", mod_rol: "3) Rol como líder de desarrollo",
+      mod_cert_title: "Mis Certificados", mod_cert_sub: "Certificaciones oficiales y acreditaciones profesionales",
+      cert_1_title: "Bases de datos SQL (Datainsights Academy)", cert_2_title: "Programación en HTML, CSS, JS (Nexus Web Academy)", cert_3_title: "Programación en Java (Apex Academy)", cert_4_title: "Programación en Python y Fotografía Digital (Apex Academy)",
+      btn_verify: "Verificar credencial ↗",
+      cv_sub: "Licenciado en Ingeniería de Software · CV Ejecutivo", cv_profile: "Perfil profesional",
+      cv_profile_text: "Ingeniero de Software enfocado en la arquitectura de sistemas, gestión de proyectos y control de calidad bajo estándares rigurosos.",
+      btn_dl_pdf: "Descargar PDF", btn_close: "Cerrar"
+    },
+    en: {
+      brand_title: "/ B.S. in Software Engineering",
+      nav_inicio: "Home", nav_proyectos: "Projects", nav_sobre: "About", nav_contacto: "Contact", nav_hablemos: "Let's Talk",
+      ind_lbl: "Indicators", est_lbl: "Strategy", ubi_title: "Location:", int_title: "Interests:", int_val: "Quality, Leadership, Architecture",
+      redes_tit: "Find me on my networks", redes_lk: "View my profile", redes_gh: "View repositories", redes_wa: "Direct message", redes_em: "Email", redes_em_sub: "Write email",
+      badge_opt: "Open to new opportunities",
+      h1_main: "Hello, I'm Oscar Mauricio Ramos García",
+      p_main: "Software Engineer leading teams and projects to turn business needs into reliable, measurable, and scalable systems. I transform ideas into business solutions and scalable architecture.",
+      btn_explore: "Explore projects", btn_dl_cv: "Download CV", btn_sched: "Schedule meeting",
+      ind_key: "Key Metrics", m_exp: "Years of Experience", m_proj: "Key Projects", m_deliv: "On-time Deliveries",
+      comp_title: "Core Competencies", c_1: "Project Management", c_2: "ISO Quality", c_3: "Scrum", c_4: "Technical Leadership",
+      proj_title: "My Projects", proj_sub: "Real cases where leadership and architecture solved business challenges.",
+      f_all: "All", f_mgmt: "Management", f_qual: "Quality & Processes", f_arch: "Architecture",
+      p1_name: "Black Brothers Store", p1_res: "[30% reduction in discrepancies]", p1_sub: "Commercial Management System and Inventory Control", p1_p: "Manual inventory control and sales registration processes caused shrinkage, human error, and slow customer service.", p1_s: "Implementation of a comprehensive management system to automate cash flow, real-time stock control, and commercial reporting.", p1_r: "Software Engineer and Project Manager, responsible for relational database design, data integrity validation, and performance testing.", p1_res_full: "Measurable result: 30% reduction in inventory discrepancies.",
+      p2_name: "OPTEM Agenda", p2_res: "[40% optimization in planning]", p2_sub: "Intelligent Virtual Agenda for Academic Management", p2_p: "Saturation of academic activities and lack of schedule centralization caused disorganization and delays in meeting goals.", p2_s: "Development of a local desktop application structured under a robust modular architecture in Java and SQLite to automate scheduling and centralize tasks.", p2_r: "Development and Architecture Lead, in charge of requirements analysis (FPA), system modeling, and business logic coordination.", p2_res_full: "Measurable result: 40% optimization in weekly planning.",
+      p3_name: "JODA Compiler", p3_res: "[100% lexical precision]", p3_sub: "Lexical and Syntactic Analysis Tool", p3_p: "The need to process and syntactically validate instructions in custom languages required an efficient and automated analysis tool.", p3_s: "Design of a lightweight compiler structure capable of token analysis, formal rule validation, and structured error reporting.", p3_r: "Lead compiler logic developer, applying automata and formal language principles to ensure rigorous processing.", p3_res_full: "Measurable result: 100% precision in error detection.",
+      p4_name: "Library Management", p4_res: "[−50% processing time]", p4_sub: "Automated Lending and Library Control System", p4_p: "Slow processes in lending, returning, and tracking bibliographic collections affected resource availability for users.", p4_s: "Creation of automated library control software that streamlines user registration, book catalogs, and strict due date tracking.", p4_r: "Technical Lead, in charge of user interface design focused on operator experience and logical structuring of control modules.", p4_res_full: "Measurable result: Over 50% decrease in processing time.",
+      btn_details: "View details",
+      nav_sobre: "About", about_sub: "Committed to turning business needs into sustainable, high-impact solutions.",
+      about_bio: "Hi, I'm Oscar Mauricio Ramos García. I am a Software Engineer focused on planning, coordinating, and delivering high-quality projects, guiding multidisciplinary teams towards measurable results.",
+      exp_role: "Software Engineer / Technical Lead", exp_time: "2024 – Present",
+      edu_title: "Education & Certifications:", edu_val: "B.S. in Software Engineering.",
+      btn_certs: "View certificates ↗", btn_view_cv: "View Executive CV",
+      cont_title: "Get in touch", cont_sub: "Have a project in mind or looking to add leadership to your team? Let's talk.",
+      ph_name: "Name", ph_email: "Email Address", ph_subj: "Subject", ph_msg: "Message", btn_send: "Send message (Open Mail)",
+      mod_prob: "1) Business Problem", mod_sol: "2) Description & Solution", mod_rol: "3) Role as Development Lead",
+      mod_cert_title: "My Certificates", mod_cert_sub: "Official certifications and professional credentials",
+      cert_1_title: "SQL Databases (Datainsights Academy)", cert_2_title: "HTML, CSS, JS Programming (Nexus Web Academy)", cert_3_title: "Java Programming (Apex Academy)", cert_4_title: "Python Programming & Digital Photography (Apex Academy)",
+      btn_verify: "Verify credential ↗",
+      cv_sub: "Software Engineer · Executive CV", cv_profile: "Professional Profile",
+      cv_profile_text: "Software Engineer focused on system architecture, project management, and rigorous quality control standards.",
+      btn_dl_pdf: "Download PDF", btn_close: "Close"
+    }
+  };
+
+  let currentLang = 'es';
+  const langBtn = document.getElementById('lang-toggle');
+
+  langBtn.addEventListener('click', () => {
+    currentLang = currentLang === 'es' ? 'en' : 'es';
+    langBtn.textContent = currentLang === 'es' ? 'EN' : 'ES';
+
+    document.querySelectorAll('[data-i18n]').forEach(el => {
+      const key = el.getAttribute('data-i18n');
+      if (translations[currentLang][key]) {
+        el.innerHTML = translations[currentLang][key];
+      }
+    });
+
+    document.querySelectorAll('[data-i18n-ph]').forEach(el => {
+      const key = el.getAttribute('data-i18n-ph');
+      if (translations[currentLang][key]) {
+        el.placeholder = translations[currentLang][key];
+      }
+    });
+  });
+
+})();
+</script>
+</body>
+</html>
